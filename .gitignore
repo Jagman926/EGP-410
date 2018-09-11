@@ -1,0 +1,73 @@
+DeanLib/Debug/DeanLib.tlog/CL.command.1.tlog
+DeanLib/Debug/DeanLib.tlog/CL.read.1.tlog
+DeanLib/Debug/DeanLib.tlog/CL.write.1.tlog
+DeanLib/Debug/DeanLib.tlog/DeanLib.lastbuildstate
+DeanLib/Debug/DeanLib.tlog/Lib.command.1.tlog
+DeanLib/Debug/DeanLib.tlog/Lib-link.read.1.tlog
+DeanLib/Debug/DeanLib.tlog/Lib-link.write.1.tlog
+DeanLib/Debug/CircularQueue.obj
+DeanLib/Debug/DeanLib.idb
+DeanLib/Debug/DeanLib.log
+DeanLib/Debug/DeanLib.pdb
+DeanLib/Debug/DeanLibDebug.Build.CppClean.log
+DeanLib/Debug/MemoryPool.obj
+DeanLib/Debug/MemoryTracker.obj
+DeanLib/Debug/PerformanceTracker.obj
+DeanLib/Debug/Timer.obj
+DeanLib/Debug/Trackable.obj
+DeanLib/Debug/Vector2D.obj
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/1c47e248d3e7ebc4/WANDERSTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/2606e0128b85417/WANDERSTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/2bf394848872d194/STEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/326b4afe993d0d4c/SEEKSTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/3b783131d63e3315/FACESTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/6023fbc242bf3abb/WANDERANDCHASESTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/628476593c1c7edf/ARRIVESTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/7d53cfcdfe190226/FACESTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/a1dea2cfcf36fc08/WANDERANDCHASESTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/a5b953ceae5cb7bc/ARRIVESTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/a9ef54a6ac557cff/UNIT.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/fb8706d653fef693/STEERINGCOMPONENT.ipch
+GameAI/component steering SDL/.vs/steering/v15/.suo
+GameAI/component steering SDL/.vs/steering/v15/Browse.VC.db
+GameAI/component steering SDL/.vs/steering/v15/Browse.VC.opendb
+GameAI/component steering SDL/.vs/steering/v15/Solution.VC.db
+GameAI/component steering SDL/.vs/steering/v15/Solution.VC.db-shm
+GameAI/component steering SDL/.vs/steering/v15/Solution.VC.db-wal
+GameAI/component steering SDL/Debug/steering.tlog/CL.command.1.tlog
+GameAI/component steering SDL/Debug/steering.tlog/CL.read.1.tlog
+GameAI/component steering SDL/Debug/steering.tlog/CL.write.1.tlog
+GameAI/component steering SDL/Debug/steering.tlog/link.command.1.tlog
+GameAI/component steering SDL/Debug/steering.tlog/link.read.1.tlog
+GameAI/component steering SDL/Debug/steering.tlog/link.write.1.tlog
+GameAI/component steering SDL/Debug/steering.tlog/steering.lastbuildstate
+GameAI/component steering SDL/Debug/Color.obj
+GameAI/component steering SDL/Debug/Component.obj
+GameAI/component steering SDL/Debug/ComponentManager.obj
+GameAI/component steering SDL/Debug/Font.obj
+GameAI/component steering SDL/Debug/Game.obj
+GameAI/component steering SDL/Debug/GameMessage.obj
+GameAI/component steering SDL/Debug/GameMessageManager.obj
+GameAI/component steering SDL/Debug/GraphicsBuffer.obj
+GameAI/component steering SDL/Debug/GraphicsBufferManager.obj
+GameAI/component steering SDL/Debug/GraphicsSystem.obj
+GameAI/component steering SDL/Debug/main.obj
+GameAI/component steering SDL/Debug/PhysicsComponent.obj
+GameAI/component steering SDL/Debug/PlayerMoveToMessage.obj
+GameAI/component steering SDL/Debug/PositionComponent.obj
+GameAI/component steering SDL/Debug/Renderer.obj
+GameAI/component steering SDL/Debug/SeekSteering.obj
+GameAI/component steering SDL/Debug/Sprite.obj
+GameAI/component steering SDL/Debug/SpriteManager.obj
+GameAI/component steering SDL/Debug/steering.Build.CppClean.log
+GameAI/component steering SDL/Debug/steering.exe
+GameAI/component steering SDL/Debug/steering.ilk
+GameAI/component steering SDL/Debug/steering.log
+GameAI/component steering SDL/Debug/Steering.obj
+GameAI/component steering SDL/Debug/steering.pdb
+GameAI/component steering SDL/Debug/SteeringComponent.obj
+GameAI/component steering SDL/Debug/Unit.obj
+GameAI/component steering SDL/Debug/UnitManager.obj
+GameAI/component steering SDL/Debug/vc141.idb
+GameAI/component steering SDL/Debug/vc141.pdb
+DeanLib/lib/DeanLibDebug.lib
