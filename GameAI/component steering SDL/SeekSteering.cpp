@@ -46,6 +46,10 @@ Steering* SeekSteering::getSteering()
 		diff = pOwner->getPositionComponent()->getPosition() - mTargetLoc;
 	}
 
+	//Set facing to the target's position
+	float dir = atan2(diff.getY(), diff.getX()) + atan(1) * 4 / 2;
+	pOwner->getPositionComponent()->setFacing(dir);
+
 	diff.normalize();
 	diff *= pOwner->getMaxAcc();
 

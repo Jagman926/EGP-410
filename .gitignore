@@ -71,3 +71,8 @@ GameAI/component steering SDL/Debug/UnitManager.obj
 GameAI/component steering SDL/Debug/vc141.idb
 GameAI/component steering SDL/Debug/vc141.pdb
 DeanLib/lib/DeanLibDebug.lib
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/1f2930d0acf97cd7/GAME.ipch
+GameAI/component steering SDL/Debug/ArriveSteering.obj
+GameAI/component steering SDL/Debug/FaceSteering.obj
+GameAI/component steering SDL/Debug/WanderAndChaseSteering.obj
+GameAI/component steering SDL/Debug/WanderSteering.obj
