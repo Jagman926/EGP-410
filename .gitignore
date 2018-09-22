@@ -102,7 +102,14 @@ GameAI/component steering SDL/Debug/GameListener.obj
 GameAI/component steering SDL/Debug/InputSystem.obj
 GameAI/component steering SDL/Debug/InputTranslator.obj
 GameAI/component steering SDL/Debug/MouseEvent.obj
+<<<<<<< HEAD
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/c8422dde0dab041f/GRAPHICSBUFFERMANAGER.ipch
+=======
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/60d6cc8bda43d7af/POSITIONCOMPONENT.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/84d9046f9714b7ca/MAIN.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/d7ae77eab5ec9d24/MEMORYTRACKER.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/d8d6deb4b0d7c8fc/RENDERER.ipch
+>>>>>>> dc4bf63... Added:
 GameAI/component steering SDL/ArriveSteering_BACKUP_1128.cpp
 GameAI/component steering SDL/ArriveSteering_BACKUP_13464.cpp
 GameAI/component steering SDL/ArriveSteering_BACKUP_8868.cpp
@@ -115,6 +122,11 @@ GameAI/component steering SDL/ArriveSteering_LOCAL_8868.cpp
 GameAI/component steering SDL/ArriveSteering_REMOTE_1128.cpp
 GameAI/component steering SDL/ArriveSteering_REMOTE_13464.cpp
 GameAI/component steering SDL/ArriveSteering_REMOTE_8868.cpp
+<<<<<<< HEAD
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/835e2055486eda1b/ARRIVEANDFACE.ipch
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/b04af5fe234ae468/ARRIVEANDFACE.ipch
 GameAI/component steering SDL/Debug/ArriveAndFace.obj
+=======
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/c8422dde0dab041f/GRAPHICSBUFFERMANAGER.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/d23c6a346264642d/COMPONENTMANAGER.ipch
+>>>>>>> dc4bf63... Added:
