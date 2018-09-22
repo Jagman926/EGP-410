@@ -29,5 +29,5 @@ Renderer::Renderer(SDL_Window* pWindow)
 
 Renderer::~Renderer()
 {
-	SDL_DestroyRenderer(mpRenderer);
+	//SDL_DestroyRenderer(mpRenderer);
 }
