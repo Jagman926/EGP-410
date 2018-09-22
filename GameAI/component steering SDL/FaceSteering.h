@@ -17,7 +17,8 @@ protected:
 	virtual Steering* getSteering();
 
 private:
-	float targetRadius = 10.0f;
-	float slowRadius = 200.0f;
-	float timeToTarget = .25f;
+	const float PI = 3.1415926;
+	float targetRadius = 2.0 / 180 * PI;
+	float slowRadius = 30.0f /180 * PI;
+	float timeToTarget = 1.0f;
 };

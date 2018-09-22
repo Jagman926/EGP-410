@@ -59,6 +59,7 @@ void SteeringComponent::setData(const SteeringData& data)
 		{
 			delete mpSteering;
 			mpSteering = new FaceSteering(data.ownerID, data.targetLoc, data.targetID);
+			break;
 		}
 		default:
 		{

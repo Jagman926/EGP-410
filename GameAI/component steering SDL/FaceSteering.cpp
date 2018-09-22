@@ -15,6 +15,7 @@ FaceSteering::FaceSteering(const UnitID & ownerID, const Vector2D & targetLoc, c
 
 Steering * FaceSteering::getSteering()
 {
+	Vector2D direction;
 	float targetRotation;
 	float rotation;
 	float rotationSize;
@@ -30,8 +31,10 @@ Steering * FaceSteering::getSteering()
 	}
 
 	//Get naive direction to the target
-	float targetDir = atan2(mTargetLoc.getY(), mTargetLoc.getX());
-	rotation = targetDir - pOwner->getFacing();
+	direction = mTargetLoc - pOwner->getPositionComponent()->getPosition();
+	float targetOri = atan2(direction.getY(), direction.getX()) + .5f * PI;
+	float currentRotation = fmod(pOwner->getFacing(), 2 * PI);
+	rotation = targetOri - currentRotation;
 
 	//Get rotation size
 	rotationSize = abs(rotation);
@@ -57,7 +60,7 @@ Steering * FaceSteering::getSteering()
 	targetRotation *= rotation / rotationSize;
 
 	//Acceleration to target rotation
-	data.rotAcc = targetRotation - pOwner->getFacing();
+	data.rotAcc = targetRotation - currentRotation;
 	data.rotAcc /= getTimeToTarget();
 
 	//Cap rotation acceleration
