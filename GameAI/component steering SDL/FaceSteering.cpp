@@ -15,26 +15,26 @@ FaceSteering::FaceSteering(const UnitID & ownerID, const Vector2D & targetLoc, c
 
 Steering * FaceSteering::getSteering()
 {
-	Vector2D rotation;
-	Vector2D targetRotation;
+	float targetRotation;
+	float rotation;
 	float rotationSize;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
 	PhysicsData data = pOwner->getPhysicsComponent()->getData();
 
 	if (mTargetID != INVALID_UNIT_ID)
 	{
-		//arrive unit
+		//face unit
 		Unit* pTarget = gpGame->getUnitManager()->getUnit(mTargetID);
 		assert(pTarget != NULL);
 		mTargetLoc = pTarget->getPositionComponent()->getPosition();
 	}
 
 	//Get naive direction to the target
-	rotation = mTargetLoc - pOwner->getPositionComponent()->getPosition();
+	float targetDir = atan2(mTargetLoc.getY(), mTargetLoc.getX());
+	rotation = targetDir - pOwner->getFacing();
 
-	//Map to (-pi, pi) interval
-	rotation = (float)atan2(rotation.getX(), rotation.getY());
-	rotationSize = abs(rotation.getLength());
+	//Get rotation size
+	rotationSize = abs(rotation);
 	
 	if (rotationSize < getTargetRadius())
 	{
@@ -54,15 +54,22 @@ Steering * FaceSteering::getSteering()
 	}
 
 	//Combine final target rotation
-	targetRotation = rotation;
-	targetRotation /= rotationSize;
+	targetRotation *= rotation / rotationSize;
 
 	//Acceleration to target rotation
-	//data.rotAcc = targetRotation - ;
+	data.rotAcc = targetRotation - pOwner->getFacing();
+	data.rotAcc /= getTimeToTarget();
 
 	//Cap rotation acceleration
-	
+	float rotAcc = abs(data.rotAcc);
+	if (rotAcc > data.maxRotAcc)
+	{
+		data.rotAcc /= rotAcc;
+		data.rotAcc *= data.maxRotAcc;
+	}
 
-
-	return nullptr;
+	//Set data
+	data.vel = 0;
+	this->mData = data;
+	return this;
 }
