@@ -19,7 +19,8 @@ public:
 		SEEK,
 		FLEE,
 		ARRIVE,
-		FACE
+		FACE,
+		WANDER
 	};
 
 	//constructors and destructors
