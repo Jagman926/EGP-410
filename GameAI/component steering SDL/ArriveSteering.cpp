@@ -15,6 +15,7 @@ ArriveSteering::ArriveSteering(const UnitID & ownerID, const Vector2D & targetLo
 
 Steering * ArriveSteering::getSteering()
 {
+	//Variables
 	Vector2D direction;
 	Vector2D targetVelocity;
 	float distance;

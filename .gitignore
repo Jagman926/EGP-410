@@ -102,3 +102,4 @@ GameAI/component steering SDL/Debug/GameListener.obj
 GameAI/component steering SDL/Debug/InputSystem.obj
 GameAI/component steering SDL/Debug/InputTranslator.obj
 GameAI/component steering SDL/Debug/MouseEvent.obj
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/c8422dde0dab041f/GRAPHICSBUFFERMANAGER.ipch

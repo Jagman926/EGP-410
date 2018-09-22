@@ -6,7 +6,7 @@ class ArriveSteering : public Steering
 public:
 	ArriveSteering(const UnitID& ownerID, const Vector2D& targetLoc, const UnitID& targetID = INVALID_UNIT_ID);
 	//
-	void setArriveRadius(float radius) { slowRadius = radius; };
+	void setArriveRadius(float radius) { arriveRadius = radius; };
 	void setSlowRadius(float radius) { slowRadius = radius; };
 	void setTimeToTarget(float time) { timeToTarget = time; };
 	float getArriveRadius() { return arriveRadius; };
