@@ -1,12 +1,13 @@
 #include <Trackable.h>
 #include "Steering.h"
 
+class FaceSteering;
+
 class WanderSteering : public Steering
 {
 public:
 	WanderSteering(const UnitID& ownerID, const Vector2D& targetLoc, const UnitID& targetID = INVALID_UNIT_ID);
-
-protected:
+	//
 	virtual Steering* getSteering();
 	//
 	void setWanderRadius(float radius) { wanderRadius = radius; };
@@ -17,7 +18,10 @@ protected:
 	float getWanderRate() { return wanderRate; };
 
 private:
-	float wanderOffset = 20.0f;
-	float wanderRadius = 400.0f;
-	float wanderRate = 0.1f;
+	const float PI = 3.1415926;
+	float wanderOffset = 90.0f;
+	float wanderRadius = 70.0f;
+	float wanderRate = 2 * PI;
+
+	FaceSteering* mpFaceSteering;
 };

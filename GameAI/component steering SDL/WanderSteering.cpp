@@ -1,53 +1,57 @@
 #include <cassert>
 
-#include "Steering.h"
 #include "WanderSteering.h"
+#include "FaceSteering.h"
 #include "Game.h"
 #include "UnitManager.h"
 #include "Unit.h"
+
 
 WanderSteering::WanderSteering(const UnitID & ownerID, const Vector2D & targetLoc, const UnitID & targetID)
 {
 	setOwnerID(ownerID);
 	setTargetID(targetID);
 	setTargetLoc(targetLoc);
+	mType = Steering::WANDER;
+
+	mpFaceSteering = new FaceSteering(ownerID, targetLoc, targetID);
 }
 
 Steering * WanderSteering::getSteering()
 {
 	//Variables
 	Vector2D target;
-	Vector2D targetVec2Ori;
-	float targetOrientation;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
 	PhysicsData data = pOwner->getPhysicsComponent()->getData();
-	float wanderOrientation = pOwner->getFacing();
-
-	if (mTargetID != INVALID_UNIT_ID)
-	{
-		//face unit
-		Unit* pTarget = gpGame->getUnitManager()->getUnit(mTargetID);
-		assert(pTarget != NULL);
-		mTargetLoc = pTarget->getPositionComponent()->getPosition();
-	}
+	//Orientations
+	float wanderOri = 0;
+	float targetOri = 0;
 
 	//Update wander rotation
-	wanderOrientation += genRandomBinomial() * getWanderRate();
+	wanderOri += genRandomBinomial() * getWanderRate();
 
 	//Calculate the combined target orientation
-	targetOrientation = wanderOrientation + pOwner->getFacing();
+	targetOri = wanderOri + pOwner->getFacing();
 
 	//Calculate the center of the wander cirlce
-	target = pOwner->getPositionComponent()->getPosition() + getWanderOffset() * (sin(pOwner->getFacing()), cos(pOwner->getFacing()));
+	Vector2D characterOriVec = Vector2D(cos(pOwner->getFacing()), sin(pOwner->getFacing()));
+	mTargetLoc = pOwner->getPositionComponent()->getPosition() + characterOriVec * getWanderOffset();
 
 	//Calculate the target location
-	targetVec2Ori = mTargetLoc - pOwner->getPositionComponent()->getPosition();
-	target += getWanderRadius() * (targetVec2Ori.getX(), targetVec2Ori.getY());
+	Vector2D targetOriVec = Vector2D(cos(targetOri), sin(targetOri));
+	mTargetLoc += targetOriVec * getWanderRadius();
 
 	//Delegate to face
+	mpFaceSteering->setTargetLoc(mTargetLoc);
+	Steering* newSteering = mpFaceSteering->getSteering();
 
+	if (newSteering != NULL)
+	{
+		data.rotAcc = newSteering->getData().rotAcc;
+	}
+	
 	//Set linear acceleration
-	data.acc = data.maxAccMagnitude * (sin(pOwner->getFacing()), cos(pOwner->getFacing()));
+	data.acc = characterOriVec * pOwner->getMaxAcc();
 
 	//Set data
 	this->mData = data;

@@ -1,16 +1,17 @@
 #include <cassert>
 
-#include "Steering.h"
 #include "FaceSteering.h"
 #include "Game.h"
 #include "UnitManager.h"
 #include "Unit.h"
+
 
 FaceSteering::FaceSteering(const UnitID & ownerID, const Vector2D & targetLoc, const UnitID & targetID)
 {
 	setOwnerID(ownerID);
 	setTargetID(targetID);
 	setTargetLoc(targetLoc);
+	mType = Steering::FACE;
 }
 
 Steering * FaceSteering::getSteering()
@@ -33,10 +34,11 @@ Steering * FaceSteering::getSteering()
 	//Get naive direction to the target
 	direction = mTargetLoc - pOwner->getPositionComponent()->getPosition();
 	float targetOri = atan2(direction.getY(), direction.getX()) + .5f * PI;
-	float currentRotation = fmod(pOwner->getFacing(), 2 * PI);
+	float currentRotation = pOwner->getFacing();
 	rotation = targetOri - currentRotation;
 
 	//Get rotation size
+	currentRotation = fmod(((currentRotation - 180) / 90) * -1, 2 * PI);
 	rotationSize = abs(rotation);
 	
 	if (rotationSize < getTargetRadius())

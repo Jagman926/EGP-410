@@ -11,6 +11,7 @@ ArriveSteering::ArriveSteering(const UnitID & ownerID, const Vector2D & targetLo
 	setOwnerID(ownerID);
 	setTargetID(targetID);
 	setTargetLoc(targetLoc);
+	mType = Steering::ARRIVE;
 }
 
 Steering * ArriveSteering::getSteering()

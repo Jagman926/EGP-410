@@ -8,8 +8,6 @@
 #include "defines.h"
 #include "PhysicsComponent.h"
 
-
-
 class Steering: public Trackable
 {
 public:
