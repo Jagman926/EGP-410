@@ -47,7 +47,7 @@ Steering* SeekSteering::getSteering()
 	}
 
 	//Set facing to the target's position
-	float dir = atan2(diff.getY(), diff.getX()) + atan(1) * 4 / 2;
+	float dir = atan2(diff.getY(), diff.getX());
 	pOwner->getPositionComponent()->setFacing(dir);
 
 	diff.normalize();

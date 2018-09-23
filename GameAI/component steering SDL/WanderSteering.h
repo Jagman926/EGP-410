@@ -19,8 +19,8 @@ public:
 
 private:
 	const float PI = 3.1415926;
-	float wanderOffset = 90.0f;
-	float wanderRadius = 70.0f;
+	float wanderOffset = 130.0f;
+	float wanderRadius = 90.0f;
 	float wanderRate = 2 * PI;
 
 	FaceSteering* mpFaceSteering;

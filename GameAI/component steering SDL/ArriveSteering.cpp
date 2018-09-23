@@ -73,7 +73,7 @@ Steering * ArriveSteering::getSteering()
 	}
 
 	//Set facing to the target's position
-	float dir = atan2(data.vel.getY(), data.vel.getX()) + atan(1) * 4 / 2;
+	float dir = atan2(data.vel.getY(), data.vel.getX());
 	pOwner->getPositionComponent()->setFacing(dir);
 
 	//Set data

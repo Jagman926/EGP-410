@@ -20,12 +20,13 @@ Steering * FaceSteering::getSteering()
 	float targetRotation;
 	float rotation;
 	float rotationSize;
+	float mappedRotation;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
 	PhysicsData data = pOwner->getPhysicsComponent()->getData();
 
 	if (mTargetID != INVALID_UNIT_ID)
 	{
-		//face unit
+		//seeking unit
 		Unit* pTarget = gpGame->getUnitManager()->getUnit(mTargetID);
 		assert(pTarget != NULL);
 		mTargetLoc = pTarget->getPositionComponent()->getPosition();
@@ -33,23 +34,22 @@ Steering * FaceSteering::getSteering()
 
 	//Get naive direction to the target
 	direction = mTargetLoc - pOwner->getPositionComponent()->getPosition();
-	float targetOri = atan2(direction.getY(), direction.getX()) + .5f * PI;
-	float currentRotation = pOwner->getFacing();
-	rotation = targetOri - currentRotation;
+	float targetOri = atan2(direction.getY(), direction.getX());
+	rotation = targetOri - pOwner->getFacing();
 
 	//Get rotation size
-	currentRotation = fmod(((currentRotation - 180) / 90) * -1, 2 * PI);
-	rotationSize = abs(rotation);
+	mappedRotation = mapToRange(rotation);
+	rotationSize = abs(mappedRotation);
 	
 	if (rotationSize < getTargetRadius())
 	{
 		//stop rotating
-		data.rotVel = 0;
 		data.rotAcc = 0;
+		data.rotVel = 0;
 		this->mData = data;
 		return this;
 	}
-	else if (rotationSize > getSlowRadius())
+	if (rotationSize > getSlowRadius())
 	{
 		targetRotation = pOwner->getMaxRotVel();
 	}
@@ -62,19 +62,36 @@ Steering * FaceSteering::getSteering()
 	targetRotation *= rotation / rotationSize;
 
 	//Acceleration to target rotation
-	data.rotAcc = targetRotation - currentRotation;
+	data.rotAcc = targetRotation - data.rotVel;
 	data.rotAcc /= getTimeToTarget();
 
 	//Cap rotation acceleration
-	float rotAcc = abs(data.rotAcc);
-	if (rotAcc > data.maxRotAcc)
+	float angularAcc = abs(data.rotAcc);
+	if (angularAcc > data.maxRotAcc)
 	{
-		data.rotAcc /= rotAcc;
+		data.rotAcc /= angularAcc;
 		data.rotAcc *= data.maxRotAcc;
 	}
 
 	//Set data
-	data.vel = 0;
 	this->mData = data;
 	return this;
+}
+
+float FaceSteering::mapToRange(float rotationInRadians)
+{
+	float convertedRotation;
+
+	convertedRotation = fmod((rotationInRadians), 2 * PI);
+	if (convertedRotation > PI)
+	{
+		convertedRotation = (convertedRotation - PI) * -1.0f;
+	}
+	else if (convertedRotation < -PI)
+	{
+		convertedRotation = (convertedRotation + PI) * -1.0f;
+	}
+
+	return convertedRotation;
+
 }

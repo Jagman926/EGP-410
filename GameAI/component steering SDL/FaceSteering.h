@@ -14,10 +14,11 @@ public:
 	float getTargetRadius() { return targetRadius; };
 	float getSlowRadius() { return slowRadius; };
 	float getTimeToTarget() { return timeToTarget; };
+	float mapToRange(float roationInRadians);
 
 private:
 	const float PI = 3.1415926;
-	float targetRadius = 2.0 / 180 * PI;
-	float slowRadius = 30.0f /180 * PI;
-	float timeToTarget = 0.2f;
+	float targetRadius = 0.1f;
+	float slowRadius = 0.5f;
+	float timeToTarget = 0.1f;
 };
