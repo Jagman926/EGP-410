@@ -12,6 +12,7 @@ class GraphicsBufferManager;
 class SpriteManager;
 class KinematicUnit;
 class GameMessageManager;
+class InputSystem;
 class Timer;
 class ComponentManager;
 class UnitManager;
@@ -40,6 +41,7 @@ public:
 	inline GraphicsSystem* getGraphicsSystem() const { return mpGraphicsSystem; };
 	inline GraphicsBufferManager* getGraphicsBufferManager() const { return mpGraphicsBufferManager; };
 	inline SpriteManager* getSpriteManager() const { return mpSpriteManager; };
+	inline InputSystem* getInputSystem() { return mpInputSystem; };
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
 	inline ComponentManager* getComponentManager() { return mpComponentManager; };
 	inline UnitManager* getUnitManager() { return mpUnitManager; };
@@ -50,6 +52,7 @@ private:
 	GraphicsSystem* mpGraphicsSystem;
 	GraphicsBufferManager* mpGraphicsBufferManager;
 	SpriteManager* mpSpriteManager;
+	InputSystem* mpInputSystem;
 	GameMessageManager* mpMessageManager;
 	ComponentManager* mpComponentManager;
 	UnitManager* mpUnitManager;

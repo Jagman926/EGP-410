@@ -10,6 +10,7 @@
 #include "GraphicsBuffer.h"
 #include "Font.h"
 #include "GraphicsBufferManager.h"
+#include "InputSystem.h"
 #include "GameMessageManager.h"
 #include "Sprite.h"
 #include "SpriteManager.h"
@@ -33,6 +34,7 @@ Game::Game()
 	,mpFont(NULL)
 	,mShouldExit(false)
 	,mBackgroundBufferID("")
+	,mpInputSystem(NULL)
 	,mpMessageManager(NULL)
 	,mpComponentManager(NULL)
 	,mpUnitManager(NULL)
@@ -66,7 +68,7 @@ bool Game::init()
 	mpGraphicsBufferManager = new GraphicsBufferManager(mpGraphicsSystem);
 	mpSpriteManager = new SpriteManager();
 
-
+	mpInputSystem = new InputSystem();
 	mpMessageManager = new GameMessageManager();
 	mpComponentManager = new ComponentManager(MAX_UNITS);
 	mpUnitManager = new UnitManager(MAX_UNITS);
@@ -149,6 +151,8 @@ void Game::cleanup()
 	mpGraphicsBufferManager = NULL;
 	delete mpSpriteManager;
 	mpSpriteManager = NULL;
+	delete mpInputSystem;
+	mpInputSystem = NULL;
 	delete mpMessageManager;
 	mpMessageManager = NULL;
 	delete mpUnitManager;
@@ -177,26 +181,13 @@ void Game::processLoop()
 	//draw units
 	mpUnitManager->drawAll();
 
-	SDL_PumpEvents();
-	int x, y;
-	SDL_GetMouseState(&x, &y);
+	//get Input
+	mpInputSystem->update();
 
-	//create mouse text
-	std::stringstream mousePos;
-	mousePos << x << ":" << y;
-
-	//write text at mouse position
-	mpGraphicsSystem->writeText(*mpFont, (float)x, (float)y, mousePos.str(), BLACK_COLOR);
-
-	//test of fill region
-	//mpGraphicsSystem->fillRegion(*pDest, Vector2D(300, 300), Vector2D(500, 500), RED_COLOR);
+	//render current frame
 	mpGraphicsSystem->swap();
 
-	mpMessageManager->processMessagesForThisframe();
-
-	//get input - should be moved someplace better
-	SDL_PumpEvents();
-
+	/*
 	if( SDL_GetMouseState(&x,&y) & SDL_BUTTON(SDL_BUTTON_LEFT) )
 	{
 		Vector2D pos( x, y );
@@ -217,7 +208,7 @@ void Game::processLoop()
 			mShouldExit = true;
 		}
 	}
-	/*
+
 	Unit* pUnit = mpUnitManager->createRandomUnit(*mpSpriteManager->getSprite(AI_ICON_SPRITE_ID));
 	if (pUnit == NULL)
 	{
