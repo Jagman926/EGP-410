@@ -125,7 +125,7 @@ bool Game::init()
 
 	pUnit = mpUnitManager->createUnit(*pEnemyArrow, true, PositionData(Vector2D(600.00f, 600.00f), 0.0f));
 	pUnit->setShowTarget(true);
-	pUnit->setSteering(Steering::WANDER, ZERO_VECTOR2D, PLAYER_UNIT_ID);
+	pUnit->setSteering(Steering::WANDER_CHASE, ZERO_VECTOR2D, PLAYER_UNIT_ID);
 
 	return true;
 }

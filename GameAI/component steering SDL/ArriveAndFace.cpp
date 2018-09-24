@@ -13,13 +13,13 @@ ArriveAndFaceSteering::ArriveAndFaceSteering(const UnitID & ownerID, const Vecto
 	setTargetID(targetID);
 	setTargetLoc(targetLoc);
 	mType = Steering::ARRIVE_FACE;
-
-	mpArriveSteering = new ArriveSteering(ownerID, targetLoc, targetID);
-	mpFaceSteering = new FaceSteering(ownerID, targetLoc, targetID);
 }
 
 Steering * ArriveAndFaceSteering::getSteering()
 {
+	mpArriveSteering = new ArriveSteering(mOwnerID, mTargetLoc, mTargetID);
+	mpFaceSteering = new FaceSteering(mOwnerID, mTargetLoc, mTargetID);
+
 	Steering* faceSteeringData = mpFaceSteering->getSteering();
 	Steering* arriveSteeringData = mpArriveSteering->getSteering();
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
@@ -43,5 +43,7 @@ Steering * ArriveAndFaceSteering::getSteering()
 	}
 
 	this->mData = data;
+	delete mpArriveSteering;
+	delete mpFaceSteering;
 	return this;
 }

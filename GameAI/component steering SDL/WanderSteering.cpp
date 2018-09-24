@@ -13,12 +13,12 @@ WanderSteering::WanderSteering(const UnitID & ownerID, const Vector2D & targetLo
 	setTargetID(targetID);
 	setTargetLoc(targetLoc);
 	mType = Steering::WANDER;
-
-	mpFaceSteering = new FaceSteering(ownerID, targetLoc, targetID);
 }
 
 Steering * WanderSteering::getSteering()
 {
+	mpFaceSteering = new FaceSteering(mOwnerID, mTargetLoc, mTargetID);
+
 	//Variables
 	Vector2D target;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
@@ -55,5 +55,6 @@ Steering * WanderSteering::getSteering()
 
 	//Set data
 	this->mData = data;
+	delete mpFaceSteering;
 	return this;
 }
