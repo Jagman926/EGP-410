@@ -144,3 +144,4 @@ GameAI/component steering SDL/Debug/AddRandomUnitMessage.obj
 GameAI/component steering SDL/Debug/DeleteRandomUnitMessage.obj
 GameAI/component steering SDL/Debug/ExitGameMessage.obj
 GameAI/component steering SDL/Debug/OutputMouseCoordsMessage.obj
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/91923b1925be8447/GAME.ipch
