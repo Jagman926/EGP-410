@@ -27,7 +27,7 @@ Steering* SeekSteering::getSteering()
 {
 	Vector2D diff;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
-	//are we seeking a location or a unit?
+	PhysicsData data = pOwner->getPhysicsComponent()->getData();
 	
 	if (mTargetID != INVALID_UNIT_ID)
 	{
@@ -49,7 +49,6 @@ Steering* SeekSteering::getSteering()
 	diff.normalize();
 	diff *= pOwner->getMaxAcc();
 
-	PhysicsData data = pOwner->getPhysicsComponent()->getData();
 	data.acc = diff;
 	data.rotVel = 1.0f;
 	this->mData = data;

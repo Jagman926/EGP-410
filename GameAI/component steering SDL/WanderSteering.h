@@ -10,18 +10,20 @@ public:
 	//
 	virtual Steering* getSteering();
 	//
-	void setWanderRadius(float radius) { wanderRadius = radius; };
-	void setWanderOffset(float radius) { wanderOffset = radius; };
-	void setWanderRate(float time) { wanderRate = time; };
-	float getWanderRadius() { return wanderRadius; };
-	float getWanderOffset() { return wanderOffset; };
-	float getWanderRate() { return wanderRate; };
+	void setWanderRadius(float radius) { mWanderRadius = radius; };
+	void setWanderOffset(float radius) { mWanderOffset = radius; };
+	void setWanderRate(float time) { mWanderRate = time; };
+
+protected:
+	FaceSteering* mpFaceSteering;
+	//
+	float getWanderRadius() { return mWanderRadius; };
+	float getWanderOffset() { return mWanderOffset; };
+	float getWanderRate() { return mWanderRate; };
 
 private:
-	const float PI = 3.1415926;
-	float wanderOffset = 130.0f;
-	float wanderRadius = 90.0f;
-	float wanderRate = 2 * PI;
-
-	FaceSteering* mpFaceSteering;
+	const float PI = 3.1415926f;
+	float mWanderOffset = 130.0f;
+	float mWanderRadius = 90.0f;
+	float mWanderRate = 2.0f * PI;
 };

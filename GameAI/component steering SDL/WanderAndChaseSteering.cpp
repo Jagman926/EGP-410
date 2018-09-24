@@ -19,16 +19,18 @@ WanderAndChaseSteering::WanderAndChaseSteering(const UnitID & ownerID, const Vec
 
 Steering * WanderAndChaseSteering::getSteering()
 {
+	//steering pointers
 	mpSeekSteering = new SeekSteering(mOwnerID, mTargetLoc, mTargetID);
 	mpWanderSteering = new WanderSteering(mOwnerID, mTargetLoc, mTargetID);
 	mpFaceSteering = new FaceSteering(mOwnerID, mTargetLoc, mTargetID);
+	//steering data
+	Steering* pFaceSteeringData = mpFaceSteering->getSteering();
+	mpSteeringData = NULL;
 
 	Vector2D direction;
 	float playerDirection;
-	Steering* faceSteeringData = mpFaceSteering->getSteering();
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
 	PhysicsData data = pOwner->getPhysicsComponent()->getData();
-	mpSteeringData = NULL;
 
 	if (mTargetID != INVALID_UNIT_ID)
 	{
@@ -37,29 +39,38 @@ Steering * WanderAndChaseSteering::getSteering()
 		mTargetLoc = pTarget->getPositionComponent()->getPosition();
 	}
 
+	//set directions
 	direction = mTargetLoc - pOwner->getPositionComponent()->getPosition();
 	playerDirection = direction.getLength();
 
-	if (playerDirection < mSEEK_RADIUS)
+	if (playerDirection < getSeekRadius())
 	{
+		//get to seek steering
 		mpSteeringData = mpSeekSteering->getSteering();
 
+		//set target location for face
 		mpFaceSteering->setTargetLoc(mTargetLoc);
-		faceSteeringData = mpFaceSteering->getSteering();
+		pFaceSteeringData = mpFaceSteering->getSteering();
 
+		//apply rotation from face data
 		data.rotAcc = mpFaceSteering->getData().rotAcc;
 	}
 	else
 	{
+		//set to wander steering
 		mpSteeringData = mpWanderSteering->getSteering();
+		//apply rotation from wander data
 		data.rotAcc = mpSteeringData->getData().rotAcc;
 	}
-
+	//set acceleration
 	data.acc = mpSteeringData->getData().acc;
 
 	this->mData = data;
+
+	//clean up
 	delete mpFaceSteering;
 	delete mpSeekSteering;
 	delete mpWanderSteering;
+
 	return this;
 }

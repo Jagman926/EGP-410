@@ -145,3 +145,11 @@ GameAI/component steering SDL/Debug/DeleteRandomUnitMessage.obj
 GameAI/component steering SDL/Debug/ExitGameMessage.obj
 GameAI/component steering SDL/Debug/OutputMouseCoordsMessage.obj
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/91923b1925be8447/GAME.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/20a8e7d949b1c0a3/STEERINGCOMPONENT.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/4b3fea48261a75cf/ARRIVESTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/61ee8ef80e3906a4/STEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/646dec60f0d9e1a5/FACESTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/7e80356100b24527/WANDERSTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/9f9dabe3e347b538/WANDERANDCHASESTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/c3616bd0d99232f8/ARRIVEANDFACE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/d08886202036f2bc/SEEKSTEERING.ipch

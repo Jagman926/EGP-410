@@ -17,10 +17,8 @@ ArriveSteering::ArriveSteering(const UnitID & ownerID, const Vector2D & targetLo
 Steering * ArriveSteering::getSteering()
 {
 	//Variables
-	Vector2D direction;
-	Vector2D targetVelocity;
-	float distance;
-	float targetSpeed;
+	Vector2D direction, targetVelocity;
+	float distance, targetSpeed;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
 	PhysicsData data = pOwner->getPhysicsComponent()->getData();
 
@@ -46,14 +44,14 @@ Steering * ArriveSteering::getSteering()
 		return this;
 	}
 	//If outside slow radius
-	else if (distance > slowRadius)
+	else if (distance > getSlowRadius())
 	{
 		targetSpeed = data.maxSpeed;
 	}
 	//If inside slow radius
 	else
 	{
-		targetSpeed = (data.maxSpeed * distance / slowRadius);
+		targetSpeed = (data.maxSpeed * distance / getSlowRadius());
 	}
 
 	//taget velocity combines speed and direction
@@ -63,7 +61,7 @@ Steering * ArriveSteering::getSteering()
 
 	//Acceleration tries to get to the target velocity
 	data.acc = targetVelocity - pOwner->getPhysicsComponent()->getVelocity();
-	data.acc /= timeToTarget;
+	data.acc /= getTimeToTarget();
 
 	//Cap acceleration
 	if (data.acc.getLength() > data.maxAccMagnitude)

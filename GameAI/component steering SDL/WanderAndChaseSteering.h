@@ -9,6 +9,8 @@ class WanderAndChaseSteering : public Steering
 {
 public:
 	WanderAndChaseSteering(const UnitID& ownerID, const Vector2D& targetLoc, const UnitID& targetID = INVALID_UNIT_ID, bool shouldFlee = false);
+	//
+	void setSeekRadius(float seekRadius) { mSeekRadius = seekRadius; };
 
 protected:
 	Steering* mpSteeringData;
@@ -17,6 +19,8 @@ protected:
 	FaceSteering* mpFaceSteering;
 	//
 	virtual Steering* getSteering();
-	//
-	const float mSEEK_RADIUS = 300;
+	float getSeekRadius() { return mSeekRadius; };
+
+private:
+	float mSeekRadius = 300;
 };

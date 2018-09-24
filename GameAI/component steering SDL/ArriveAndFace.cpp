@@ -17,21 +17,23 @@ ArriveAndFaceSteering::ArriveAndFaceSteering(const UnitID & ownerID, const Vecto
 
 Steering * ArriveAndFaceSteering::getSteering()
 {
+	//steering pointers
 	mpArriveSteering = new ArriveSteering(mOwnerID, mTargetLoc, mTargetID);
 	mpFaceSteering = new FaceSteering(mOwnerID, mTargetLoc, mTargetID);
+	//steering data
+	Steering* pFaceSteeringData = mpFaceSteering->getSteering();
+	Steering* pArriveSteeringData = mpArriveSteering->getSteering();
 
-	Steering* faceSteeringData = mpFaceSteering->getSteering();
-	Steering* arriveSteeringData = mpArriveSteering->getSteering();
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
 	PhysicsData data = pOwner->getPhysicsComponent()->getData();
 
-	if (arriveSteeringData != NULL)
+	if (pArriveSteeringData != NULL)
 	{
-		data.acc = arriveSteeringData->getData().acc;
+		data.acc = pArriveSteeringData->getData().acc;
 
-		if (faceSteeringData != NULL)
+		if (pFaceSteeringData != NULL)
 		{
-			data.rotAcc = faceSteeringData->getData().rotAcc;
+			data.rotAcc = pFaceSteeringData->getData().rotAcc;
 		}
 	}
 	else

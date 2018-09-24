@@ -50,6 +50,7 @@ bool Game::init()
 {
 	srand(static_cast<unsigned>(time(NULL)));
 
+	//set exit to false
 	mShouldExit = false;
 
 	//create Timers
@@ -107,19 +108,10 @@ bool Game::init()
 		mpSpriteManager->createAndManageSprite(TARGET_SPRITE_ID, pTargetBuffer, 0, 0, (float)pTargetBuffer->getWidth(), (float)pTargetBuffer->getHeight());
 	}
 
-	//setup units
+	//setup player unit
 	Unit* pUnit = mpUnitManager->createPlayerUnit(*pArrowSprite);
 	pUnit->setShowTarget(true);
 	pUnit->setSteering(Steering::ARRIVE_FACE, ZERO_VECTOR2D);
-
-	//create enemies
-	pUnit = mpUnitManager->createUnit(*pEnemyArrow, true, PositionData(Vector2D(400.00f, 400.00f), 0.0f));
-	pUnit->setShowTarget(true);
-	pUnit->setSteering(Steering::FACE, ZERO_VECTOR2D, PLAYER_UNIT_ID);
-
-	pUnit = mpUnitManager->createUnit(*pEnemyArrow, true, PositionData(Vector2D(600.00f, 600.00f), 0.0f));
-	pUnit->setShowTarget(true);
-	pUnit->setSteering(Steering::WANDER_CHASE, ZERO_VECTOR2D, PLAYER_UNIT_ID);
 
 	return true;
 }
@@ -139,6 +131,7 @@ void Game::cleanup()
 	delete mpGraphicsSystem;
 	mpGraphicsSystem = NULL;
 
+	//delete managers
 	delete mpGraphicsBufferManager;
 	mpGraphicsBufferManager = NULL;
 	delete mpSpriteManager;
@@ -162,6 +155,7 @@ const float TARGET_ELAPSED_MS = LOOP_TARGET_TIME / 1000.0f;
 	
 void Game::processLoop()
 {
+	//update unit and component managers
 	mpUnitManager->updateAll(TARGET_ELAPSED_MS);
 	mpComponentManager->update(TARGET_ELAPSED_MS);
 	
@@ -178,35 +172,6 @@ void Game::processLoop()
 
 	//render current frame
 	mpGraphicsSystem->swap();
-
-	/*
-	if( SDL_GetMouseState(&x,&y) & SDL_BUTTON(SDL_BUTTON_LEFT) )
-	{
-		Vector2D pos( x, y );
-		GameMessage* pMessage = new PlayerMoveToMessage( pos );
-		MESSAGE_MANAGER->addMessage( pMessage, 0 );
-	}
-
-
-	
-	//all this should be moved to InputManager!!!
-	{
-		//get keyboard state
-		const Uint8 *state = SDL_GetKeyboardState(NULL);
-
-		//if escape key was down then exit the loop
-		if( state[SDL_SCANCODE_ESCAPE] )
-		{
-			mShouldExit = true;
-		}
-	}
-
-	Unit* pUnit = mpUnitManager->createRandomUnit(*mpSpriteManager->getSprite(AI_ICON_SPRITE_ID));
-	if (pUnit == NULL)
-	{
-	mpUnitManager->deleteRandomUnit();
-	}
-	*/
 
 }
 

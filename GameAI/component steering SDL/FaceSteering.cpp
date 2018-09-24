@@ -17,10 +17,7 @@ FaceSteering::FaceSteering(const UnitID & ownerID, const Vector2D & targetLoc, c
 Steering * FaceSteering::getSteering()
 {
 	Vector2D direction;
-	float targetRotation;
-	float rotation;
-	float rotationSize;
-	float mappedRotation;
+	float targetRotation, rotation, rotationSize, mappedRotation;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
 	PhysicsData data = pOwner->getPhysicsComponent()->getData();
 

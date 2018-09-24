@@ -17,7 +17,10 @@ WanderSteering::WanderSteering(const UnitID & ownerID, const Vector2D & targetLo
 
 Steering * WanderSteering::getSteering()
 {
+	//steering pointers
 	mpFaceSteering = new FaceSteering(mOwnerID, mTargetLoc, mTargetID);
+	//steering data
+	Steering* pFaceSteeringData = mpFaceSteering->getSteering();
 
 	//Variables
 	Vector2D target;
@@ -41,13 +44,12 @@ Steering * WanderSteering::getSteering()
 	Vector2D targetOriVec = Vector2D(cos(targetOri), sin(targetOri));
 	mTargetLoc += targetOriVec * getWanderRadius();
 
-	//Delegate to face
+	//set face to target
 	mpFaceSteering->setTargetLoc(mTargetLoc);
-	Steering* newSteering = mpFaceSteering->getSteering();
 
-	if (newSteering != NULL)
+	if (pFaceSteeringData != NULL)
 	{
-		data.rotAcc = newSteering->getData().rotAcc;
+		data.rotAcc = pFaceSteeringData->getData().rotAcc;
 	}
 	
 	//Set linear acceleration

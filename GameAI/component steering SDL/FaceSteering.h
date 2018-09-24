@@ -8,17 +8,19 @@ public:
 	//
 	virtual Steering* getSteering();
 	//
-	void setTargetRadius(float radius) { targetRadius = radius; };
-	void setSlowRadius(float radius) { slowRadius = radius; };
-	void setTimeToTarget(float time) { timeToTarget = time; };
-	float getTargetRadius() { return targetRadius; };
-	float getSlowRadius() { return slowRadius; };
-	float getTimeToTarget() { return timeToTarget; };
+	void setTargetRadius(float radius) { mTargetRadius = radius; };
+	void setSlowRadius(float radius) { mSlowRadius = radius; };
+	void setTimeToTarget(float time) { mTimeToTarget = time; };
 	float mapToRange(float roationInRadians);
 
+protected:
+	float getTargetRadius() { return mTargetRadius; };
+	float getSlowRadius() { return mSlowRadius; };
+	float getTimeToTarget() { return mTimeToTarget; };
+
 private:
-	const float PI = 3.1415926;
-	float targetRadius = 0.1f;
-	float slowRadius = 0.5f;
-	float timeToTarget = 0.1f;
+	const float PI = 3.1415926f;
+	float mTargetRadius = 0.1f;
+	float mSlowRadius = 0.5f;
+	float mTimeToTarget = 0.1f;
 };
