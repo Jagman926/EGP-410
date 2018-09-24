@@ -16,37 +16,37 @@ Git Link: https://github.com/Jagman926/EGP-410
  * Run project
 
 ## Input Instructions
- * Mouse Movement
+ #### Mouse Movement
 
  > Displays mouse coordinates
 
- * Mouse Click 
+ #### Mouse Click 
 
  > Moves player (black arrow) to coordinates
 
- * "Enter" Key 
+ #### "Enter" Key 
 
  > Spawns new unit at random position with a WanderAndChase Steering
 
- * "D" Key
+ #### "D" Key
 
  > Deletes random unit (excludes player)
 
- * "Escape" Key
+ #### "Escape" Key
 
  > Exits game
 
 ## Additional Information
- * This repository contains three major directories:
+ #### This repository contains three major directories:
 
-     * DeanLib - Base utility library provided by Dean Lawson. Memory tracking and basic vector mathematics utilities.
+ * DeanLib - Base utility library provided by Dean Lawson. Memory tracking and basic vector mathematics utilities.
 
-     * External Libs - Allegro 5.0.10 support libraries.
+ * External Libs - Allegro 5.0.10 support libraries.
 
-     * Game AI - Base source code for EGP 410 Assignments
+ * Game AI - Base source code for EGP 410 Assignments
 
-         * pathfinding
+     * pathfinding
 
-         * state machine
+     * state machine
 
-         * steering
+     * steering
