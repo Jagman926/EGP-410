@@ -47,6 +47,8 @@ public:
 	inline UnitManager* getUnitManager() { return mpUnitManager; };
 	inline Timer* getMasterTimer() const { return mpMasterTimer; };
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
+	inline Font* getFont() { return mpFont; };
+	inline void shouldExit() { mShouldExit = true; };
 
 private:
 	GraphicsSystem* mpGraphicsSystem;
@@ -56,9 +58,9 @@ private:
 	GameMessageManager* mpMessageManager;
 	ComponentManager* mpComponentManager;
 	UnitManager* mpUnitManager;
-	Font* mpFont;
 	Timer* mpLoopTimer;
 	Timer* mpMasterTimer;
+	Font* mpFont;
 	bool mShouldExit;
 
 	//should be somewhere else

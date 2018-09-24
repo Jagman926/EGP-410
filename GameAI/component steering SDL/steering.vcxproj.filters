@@ -13,9 +13,6 @@
     <ClCompile Include="GraphicsBuffer.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerMoveToMessage.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
     <ClCompile Include="Sprite.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
@@ -85,6 +82,21 @@
     <ClCompile Include="InputSystem.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerMoveToMessage.cpp">
+      <Filter>Source Files\Messaging\Meesages</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputMouseCoordsMessage.cpp">
+      <Filter>Source Files\Messaging\Meesages</Filter>
+    </ClCompile>
+    <ClCompile Include="DeleteRandomUnitMessage.cpp">
+      <Filter>Source Files\Messaging\Meesages</Filter>
+    </ClCompile>
+    <ClCompile Include="AddRandomUnitMessage.cpp">
+      <Filter>Source Files\Messaging\Meesages</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitGameMessage.cpp">
+      <Filter>Source Files\Messaging\Meesages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -103,9 +115,6 @@
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="GameMessageManager.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerMoveToMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="Defines.h">
@@ -171,6 +180,21 @@
     <ClInclude Include="InputSystem.h">
       <Filter>Header Files\Input</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerMoveToMessage.h">
+      <Filter>Header Files\Messaging\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputMouseCoordsMessage.h">
+      <Filter>Header Files\Messaging\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="DeleteRandomUnitMessage.h">
+      <Filter>Header Files\Messaging\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="AddRandomUnitMessage.h">
+      <Filter>Header Files\Messaging\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitGameMessage.h">
+      <Filter>Header Files\Messaging\Messages</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -220,6 +244,12 @@
     </Filter>
     <Filter Include="Source Files\Input">
       <UniqueIdentifier>{7c1fdeaa-2e7e-4541-93f9-69a28b545155}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Messaging\Meesages">
+      <UniqueIdentifier>{a76df628-f4ff-47c6-b610-faa8f63dd624}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Messaging\Messages">
+      <UniqueIdentifier>{53e30f71-45fb-454a-987c-e609b3b4a899}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

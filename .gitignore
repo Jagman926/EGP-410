@@ -130,3 +130,17 @@ GameAI/component steering SDL/Debug/ArriveAndFace.obj
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/c8422dde0dab041f/GRAPHICSBUFFERMANAGER.ipch
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/d23c6a346264642d/COMPONENTMANAGER.ipch
 >>>>>>> dc4bf63... Added:
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/17e26011bfacae1d/DELETERANDOMUNITMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/40eb454dc39d5782/OUTPUTMOUSECOORDSMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/61bb298b2d4bf47a/BUTTONPRESSEDMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/6e38395b79decc8e/DELETERANDOMUNITMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/90c34ce64e4d48bc/EXITGAMEMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/d65c0526f23a2109/BUTTONPRESSEDMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/dadc98b2aae5c065/ADDRANDOMUNITMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/df53f7a630f49361/OUTPUTMOUSECOORDSMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/e58303199d8c5b46/ADDRANDOMUNITMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/f2ba55e1fe7ac3af/EXITGAMEMESSAGE.ipch
+GameAI/component steering SDL/Debug/AddRandomUnitMessage.obj
+GameAI/component steering SDL/Debug/DeleteRandomUnitMessage.obj
+GameAI/component steering SDL/Debug/ExitGameMessage.obj
+GameAI/component steering SDL/Debug/OutputMouseCoordsMessage.obj
