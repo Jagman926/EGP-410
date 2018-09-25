@@ -38,10 +38,10 @@ Steering * ArriveAndFaceSteering::getSteering()
 	}
 	else
 	{
-		data.vel = 0;
 		data.acc = 0;
-		data.rotVel = 0;
+		data.vel = 0;
 		data.rotAcc = 0;
+		data.rotVel = 0;
 	}
 
 	this->mData = data;

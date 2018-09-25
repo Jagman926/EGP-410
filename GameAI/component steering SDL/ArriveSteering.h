@@ -18,7 +18,7 @@ protected:
 	float getTimeToTarget() { return mTimeToTarget; };
 
 private:
-	float mArriveRadius = 10.0f;
+	float mArriveRadius = 1.0f;
 	float mSlowRadius = 200.0f;
 	float mTimeToTarget = .25f;
 };

@@ -38,10 +38,7 @@ Steering * ArriveSteering::getSteering()
 	if (distance < getArriveRadius())
 	{
 		//stop steering
-		data.acc = 0;
-		data.vel = 0;
-		this->mData = data;
-		return this;
+		return nullptr;
 	}
 	//If outside slow radius
 	else if (distance > getSlowRadius())
@@ -70,8 +67,8 @@ Steering * ArriveSteering::getSteering()
 		data.acc *= data.maxAccMagnitude;
 	}
 
+	data.rotAcc = 0;
 	//Set data
-	data.rotVel = 0;
 	this->mData = data;
 	return this;
 }

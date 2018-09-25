@@ -22,5 +22,5 @@ protected:
 	float getSeekRadius() { return mSeekRadius; };
 
 private:
-	float mSeekRadius = 300;
+	float mSeekRadius = 150;
 };
