@@ -45,11 +45,11 @@ Steering * FaceSteering::getSteering()
 	}
 	if (rotationSize > getSlowRadius())
 	{
-		targetRotation = pOwner->getMaxRotVel();
+		targetRotation = pOwner->getMaxRotAcc();
 	}
 	else
 	{
-		targetRotation = pOwner->getMaxRotVel() * rotationSize / getSlowRadius();
+		targetRotation = pOwner->getMaxRotAcc() * rotationSize / getSlowRadius();
 	}
 
 	//Combine final target rotation

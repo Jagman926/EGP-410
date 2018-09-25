@@ -22,5 +22,5 @@ private:
 	const float PI = 3.1415926f;
 	float mTargetRadius = 0.1f;
 	float mSlowRadius = 0.5f;
-	float mTimeToTarget = 0.1f;
+	float mTimeToTarget = 0.5f;
 };
