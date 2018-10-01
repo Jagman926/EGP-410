@@ -173,6 +173,9 @@ void Game::processLoop()
 	//render current frame
 	mpGraphicsSystem->swap();
 
+	//TEST unitsInRange fucntion in UnitManager
+	gpGame->getUnitManager()->getUnitsInRange(gpGame->getUnitManager()->getPlayerUnit()->getPositionComponent()->getData(), 100.0f);
+
 }
 
 bool Game::endLoop()

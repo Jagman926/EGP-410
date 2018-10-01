@@ -1,4 +1,5 @@
 #include <map>
+#include <vector>
 
 #include "UnitManager.h"
 #include "Unit.h"
@@ -89,6 +90,36 @@ Unit* UnitManager::getUnit(const UnitID& id) const
 	{
 		return NULL;
 	}
+}
+
+std::vector<Unit*> UnitManager::getUnitsInRange(const PositionData & posData, float searchRange)
+{
+	std::vector<Unit*> unitsInRange;
+	Vector2D dataPos = posData.pos;
+	Unit* currentUnit;
+	Vector2D currentUnitPos;
+
+	for (auto it = mUnitMap.begin(); it != mUnitMap.end(); ++it)
+	{
+		//Do not include player in search
+		if (it->first != PLAYER_UNIT_ID)
+		{
+			//set unit as current unit and get position
+			currentUnit = it->second;
+			currentUnitPos = currentUnit->getPositionComponent()->getPosition();
+			//get distance
+			float distance = (dataPos - currentUnitPos).getLength();
+			//check if in search range and they aren't same unit
+			if (distance < searchRange && dataPos != currentUnitPos)
+			{
+				//if inside range, then add to vector
+				unitsInRange.push_back(currentUnit);
+				std::cout << "Unit " << it->first << " distance: " << distance << std::endl;
+			}
+		}
+	}
+	//return vector of units in range
+	return unitsInRange;
 }
 
 void UnitManager::deleteUnit(const UnitID& id)

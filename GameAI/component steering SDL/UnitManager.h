@@ -4,6 +4,7 @@
 #include <DeanLibDefines.h>
 #include <MemoryPool.h>
 #include <map>
+#include <vector>
 #include "PositionComponent.h"
 #include "PhysicsComponent.h"
 #include "Unit.h"
@@ -27,6 +28,7 @@ public:
 	Unit* createRandomUnit(const Sprite& sprite);
 
 	Unit* getUnit(const UnitID& id) const;
+	std::vector<Unit*> getUnitsInRange(const PositionData& posData, float searchRange);
 	void deleteUnit(const UnitID& id);
 	void deleteRandomUnit();
 

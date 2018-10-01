@@ -164,3 +164,12 @@ GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/c8f69cd7f260fb71/FLO
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/ea64632d83e5f28c/SEPARATIONSTEERING.ipch
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/ee44b1a6cd0afcd7/GROUPALIGNMENTSTEERING.ipch
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/f8de705cb78f58d4/GROUPALIGNMENTSTEERING.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/2d9d29a7755d9a7a/MAIN.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/2f96f648d83a0874/MEMORYTRACKER.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/6b00454bdf2ee080/MEMORYPOOL.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/882fe9ea77b74f4f/GRAPHICSBUFFERMANAGER.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/adc702e68cf2dcdc/UNITMANAGER.ipch
+GameAI/component steering SDL/Debug/CohesionSteering.obj
+GameAI/component steering SDL/Debug/FlockingSteering.obj
+GameAI/component steering SDL/Debug/GroupAlignmentSteering.obj
+GameAI/component steering SDL/Debug/SeparationSteering.obj
