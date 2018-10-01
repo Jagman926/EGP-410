@@ -14,6 +14,7 @@
     <ClInclude Include="AddRandomUnitMessage.h" />
     <ClInclude Include="ArriveAndFace.h" />
     <ClInclude Include="ArriveSteering.h" />
+    <ClInclude Include="CohesionSteering.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentManager.h" />
@@ -21,6 +22,7 @@
     <ClInclude Include="DeleteRandomUnitMessage.h" />
     <ClInclude Include="ExitGameMessage.h" />
     <ClInclude Include="FaceSteering.h" />
+    <ClInclude Include="FlockingSteering.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameMessage.h" />
@@ -28,6 +30,7 @@
     <ClInclude Include="GraphicsBuffer.h" />
     <ClInclude Include="GraphicsBufferManager.h" />
     <ClInclude Include="GraphicsSystem.h" />
+    <ClInclude Include="GroupAlignmentSteering.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="OutputMouseCoordsMessage.h" />
     <ClInclude Include="PhysicsComponent.h" />
@@ -35,6 +38,7 @@
     <ClInclude Include="PositionComponent.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SeekSteering.h" />
+    <ClInclude Include="SeparationSteering.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="Steering.h" />
@@ -48,12 +52,14 @@
     <ClCompile Include="AddRandomUnitMessage.cpp" />
     <ClCompile Include="ArriveAndFace.cpp" />
     <ClCompile Include="ArriveSteering.cpp" />
+    <ClCompile Include="CohesionSteering.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentManager.cpp" />
     <ClCompile Include="DeleteRandomUnitMessage.cpp" />
     <ClCompile Include="ExitGameMessage.cpp" />
     <ClCompile Include="FaceSteering.cpp" />
+    <ClCompile Include="FlockingSteering.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMessage.cpp" />
@@ -61,6 +67,7 @@
     <ClCompile Include="GraphicsBuffer.cpp" />
     <ClCompile Include="GraphicsBufferManager.cpp" />
     <ClCompile Include="GraphicsSystem.cpp" />
+    <ClCompile Include="GroupAlignmentSteering.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OutputMouseCoordsMessage.cpp" />
@@ -69,6 +76,7 @@
     <ClCompile Include="PositionComponent.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SeekSteering.cpp" />
+    <ClCompile Include="SeparationSteering.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="Steering.cpp" />
