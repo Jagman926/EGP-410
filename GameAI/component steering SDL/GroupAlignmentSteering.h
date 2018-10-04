@@ -11,10 +11,13 @@ public:
 	virtual Steering* getSteering();
 	//
 	void setAlignmentRadius(float radius) { mAlignmentRadius = radius; };
+	void setTimeToAlign(float time) { mTimeToAlign = time; };
 
 protected:
 	float getAlignmentRadius() { return mAlignmentRadius; };
+	float getTimeToAlign() { return mTimeToAlign; };
 
 private:
 	float mAlignmentRadius;
+	float mTimeToAlign;
 };

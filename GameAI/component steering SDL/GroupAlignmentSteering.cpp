@@ -16,6 +16,7 @@ GroupAlignmentSteering::GroupAlignmentSteering(const UnitID & ownerID, const Vec
 
 Steering * GroupAlignmentSteering::getSteering()
 {
+	Vector2D averageAcc, totalVel = 0.0f;
 	std::vector<Unit*> unitsInRange;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
 	PhysicsData data = pOwner->getPhysicsComponent()->getData();
@@ -25,8 +26,21 @@ Steering * GroupAlignmentSteering::getSteering()
 	//Loop to align with units
 	for (Unit* unit : unitsInRange)
 	{
-
+		//Add total velocity of all units in range
+		totalVel += (unit->getPhysicsComponent()->getVelocity() - pOwner->getPhysicsComponent()->getVelocity());
 	}
+	//Divide by total units
+	totalVel /= unitsInRange.size();
+	//divide by timeToAlign
+	averageAcc = totalVel * (1.0f /getTimeToAlign());
+	//Cap acceleration if too fast
+	if (averageAcc.getLength() > pOwner->getMaxAcc())
+	{
+		averageAcc.normalize();
+		averageAcc *= pOwner->getMaxAcc();
+	}
+	//Set owners acceleration to average acceleration
+	data.acc = averageAcc;
 	//Return steering
 	this->mData = data;
 	return this;
