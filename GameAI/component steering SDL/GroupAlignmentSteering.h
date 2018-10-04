@@ -6,7 +6,15 @@
 class GroupAlignmentSteering : public Steering
 {
 public:
-	GroupAlignmentSteering(const UnitID& ownerID, const Vector2D& targetLoc, const UnitID& targetID = INVALID_UNIT_ID, bool shouldFlee = false);
+	GroupAlignmentSteering(const UnitID& ownerID, const Vector2D& targetLoc, const UnitID& targetID = INVALID_UNIT_ID);
 	//
 	virtual Steering* getSteering();
+	//
+	void setAlignmentRadius(float radius) { mAlignmentRadius = radius; };
+
+protected:
+	float getAlignmentRadius() { return mAlignmentRadius; };
+
+private:
+	float mAlignmentRadius;
 };

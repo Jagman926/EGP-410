@@ -4,6 +4,7 @@
 #include <sstream>
 #include <SDL.h>
 #include <time.h>
+#include <vector>
 
 #include "Game.h"
 #include "GraphicsSystem.h"
@@ -174,7 +175,11 @@ void Game::processLoop()
 	mpGraphicsSystem->swap();
 
 	//TEST unitsInRange fucntion in UnitManager
-	gpGame->getUnitManager()->getUnitsInRange(gpGame->getUnitManager()->getPlayerUnit()->getPositionComponent()->getData(), 100.0f);
+	std::vector<Unit*> unitsInRange = gpGame->getUnitManager()->getUnitsInRange(gpGame->getUnitManager()->getPlayerUnit()->getPositionComponent()->getData(), 100.0f);
+	for (int i = 0; i < unitsInRange.size(); i++)
+	{
+		std::cout << "Units" << unitsInRange.at(i)->getPositionComponent()->getID() << ": in range" << std::endl;
+	}
 
 }
 

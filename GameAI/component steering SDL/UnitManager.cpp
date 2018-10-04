@@ -114,7 +114,6 @@ std::vector<Unit*> UnitManager::getUnitsInRange(const PositionData & posData, fl
 			{
 				//if inside range, then add to vector
 				unitsInRange.push_back(currentUnit);
-				std::cout << "Unit " << it->first << " distance: " << distance << std::endl;
 			}
 		}
 	}
