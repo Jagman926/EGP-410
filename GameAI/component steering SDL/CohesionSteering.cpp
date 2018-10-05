@@ -1,6 +1,5 @@
 #include <cassert>
 
-#include "Steering.h"
 #include "CohesionSteering.h"
 #include "Game.h"
 #include "UnitManager.h"
@@ -16,6 +15,8 @@ CohesionSteering::CohesionSteering(const UnitID & ownerID, const Vector2D & targ
 
 Steering * CohesionSteering::getSteering()
 {
+	Vector2D totalPositions = (0,0), averagePosition, direction;
+	float distance;
 	std::vector<Unit*> unitsInRange;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
 	PhysicsData data = pOwner->getPhysicsComponent()->getData();
@@ -25,8 +26,19 @@ Steering * CohesionSteering::getSteering()
 	//Loop to move towards units
 	for (Unit* unit : unitsInRange)
 	{
-
+		//Total positions of all units in range
+		totalPositions += unit->getPositionComponent()->getPosition();
 	}
+	//Average out positions
+	averagePosition /= unitsInRange.size();
+	//get direction to position
+	direction = pOwner->getPositionComponent()->getPosition() - averagePosition;
+	//Get distance apart
+	distance = direction.getLength();
+	//Add acceleration
+	direction.normalize();
+	data.acc += direction * pOwner->getMaxAcc();
+	
 	//Return steering
 	this->mData = data;
 	return this;
