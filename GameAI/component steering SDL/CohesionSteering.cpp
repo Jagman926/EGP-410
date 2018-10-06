@@ -15,7 +15,7 @@ CohesionSteering::CohesionSteering(const UnitID & ownerID, const Vector2D & targ
 
 Steering * CohesionSteering::getSteering()
 {
-	Vector2D totalPositions = (0,0), averagePosition, direction;
+	Vector2D totalPositions = (0.0f,0.0f), direction;
 	float distance;
 	std::vector<Unit*> unitsInRange;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
@@ -30,9 +30,9 @@ Steering * CohesionSteering::getSteering()
 		totalPositions += unit->getPositionComponent()->getPosition();
 	}
 	//Average out positions
-	averagePosition /= unitsInRange.size();
+	totalPositions /= unitsInRange.size();
 	//get direction to position
-	direction = pOwner->getPositionComponent()->getPosition() - averagePosition;
+	direction = pOwner->getPositionComponent()->getPosition() - totalPositions;
 	//Get distance apart
 	distance = direction.getLength();
 	//Add acceleration

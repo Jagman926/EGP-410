@@ -174,13 +174,6 @@ void Game::processLoop()
 	//render current frame
 	mpGraphicsSystem->swap();
 
-	//TEST unitsInRange fucntion in UnitManager
-	std::vector<Unit*> unitsInRange = gpGame->getUnitManager()->getUnitsInRange(gpGame->getUnitManager()->getPlayerUnit()->getPositionComponent()->getData(), 100.0f);
-	for (int i = 0; i < unitsInRange.size(); i++)
-	{
-		std::cout << "Units" << unitsInRange.at(i)->getPositionComponent()->getID() << ": in range" << std::endl;
-	}
-
 }
 
 bool Game::endLoop()

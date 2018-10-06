@@ -1,4 +1,4 @@
-#pragma once
+#ifndef SEPARATION_STEERING
 
 #include <Trackable.h>
 #include "Steering.h"
@@ -18,6 +18,8 @@ protected:
 	float getSeperationRadius() { return mSeperationRadius; };
 
 private:
-	float mDecayCoefficient;
-	float mSeperationRadius;
+	float mDecayCoefficient = .3f;
+	float mSeperationRadius = 30.0f;
 };
+
+#endif // !SEPARATION_STEERING

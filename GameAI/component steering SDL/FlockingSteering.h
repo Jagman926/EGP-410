@@ -30,7 +30,7 @@ protected:
 	float getAlignmentWeight() { return mAlignmentWeight; };
 
 private:
-	float mSeparationWeight;
-	float mCohesionWeight;
-	float mAlignmentWeight;
+	float mSeparationWeight = 0.45f;
+	float mCohesionWeight = 0.35f;
+	float mAlignmentWeight = 0.20f;
 };

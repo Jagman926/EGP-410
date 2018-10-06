@@ -5,7 +5,7 @@
 #include "UnitManager.h"
 #include "Unit.h"
 
-SeparationSteering::SeparationSteering(const UnitID & ownerID, const Vector2D & targetLoc, const UnitID& targetID = INVALID_UNIT_ID)
+SeparationSteering::SeparationSteering(const UnitID & ownerID, const Vector2D & targetLoc, const UnitID& targetID)
 {
 	setOwnerID(ownerID);
 	setTargetID(targetID);

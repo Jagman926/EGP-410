@@ -74,7 +74,7 @@ Unit* UnitManager::createRandomUnit(const Sprite& sprite)
 	if (pUnit != NULL)
 	{
 		pUnit->setShowTarget(true);
-		pUnit->setSteering(Steering::WANDER_CHASE, ZERO_VECTOR2D, PLAYER_UNIT_ID);
+		pUnit->setSteering(Steering::FLOCKING, ZERO_VECTOR2D);
 	}
 	return pUnit;
 }

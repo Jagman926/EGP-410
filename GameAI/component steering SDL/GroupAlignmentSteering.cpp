@@ -15,7 +15,7 @@ GroupAlignmentSteering::GroupAlignmentSteering(const UnitID & ownerID, const Vec
 
 Steering * GroupAlignmentSteering::getSteering()
 {
-	Vector2D averageAcc, totalVel = 0.0f;
+	Vector2D averageAcc, totalVel = (0.0f,0.0f);
 	std::vector<Unit*> unitsInRange;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
 	PhysicsData data = pOwner->getPhysicsComponent()->getData();

@@ -1,10 +1,10 @@
 #include <cassert>
 
-#include "FlockingSteering.h"
 #include "WanderSteering.h"
 #include "SeparationSteering.h"
 #include "CohesionSteering.h"
 #include "GroupAlignmentSteering.h"
+#include "FlockingSteering.h"
 #include "Game.h"
 #include "UnitManager.h"
 #include "Unit.h"
@@ -27,20 +27,24 @@ Steering * FlockingSteering::getSteering()
 	mpCohesionSteering = new CohesionSteering(mOwnerID, mTargetLoc, mTargetID);
 	mpGroupAlignmentSteering = new GroupAlignmentSteering(mOwnerID, mTargetLoc, mTargetID);
 	//Assign steering data
-	Steering* pWanderSteering = mpWanderSteering->getSteering();
+	Steering* pWanderSteeringData = mpWanderSteering->getSteering();
 	Steering* pSeparationSteeringData = mpSeparationSteering->getSteering();
 	Steering* pCohesionSteeringData = mpCohesionSteering->getSteering();
-	Steering* pGroupAlignmentData = mpGroupAlignmentSteering->getSteering();
+	Steering* pGroupAlignmentSteeringData = mpGroupAlignmentSteering->getSteering();
 
 	//Set base wander steering
-	data = pWanderSteering->getData();
+	data.acc = pWanderSteeringData->getData().acc;
+	data.rotAcc = pWanderSteeringData->getData().rotAcc;
 	//Add steerings with weights
 	//Separation
-	data.acc += pSeparationSteeringData->getData().acc * getSeparationWeight();
+	data.acc = pSeparationSteeringData->getData().acc * getSeparationWeight();
+	data.rotAcc = pWanderSteeringData->getData().rotAcc * getSeparationWeight();
 	//Cohesion
-	data.acc += pCohesionSteeringData->getData().acc * getCohesionWeight();
+	data.acc = pCohesionSteeringData->getData().acc * getCohesionWeight();
+	data.rotAcc = pCohesionSteeringData->getData().rotAcc * getCohesionWeight();
 	//Alignment
-	data.acc += pGroupAlignmentData->getData().acc * getAlignmentWeight();
+	data.acc = pGroupAlignmentSteeringData->getData().acc * getAlignmentWeight();
+	data.rotAcc = pGroupAlignmentSteeringData->getData().rotAcc * getAlignmentWeight();
 
 	//cap acceleration
 	if (data.acc.getLength() > pOwner->getMaxAcc())
@@ -48,8 +52,17 @@ Steering * FlockingSteering::getSteering()
 		data.acc.normalize();
 		data.acc *= pOwner->getMaxAcc();
 	}
+	//cap rotation acceleration
+	if (data.rotAcc > pOwner->getMaxRotAcc())
+	{
+		data.rotAcc = pOwner->getMaxRotAcc();
+	}
 
 	//Return steering
 	this->mData = data;
+	delete mpWanderSteering;
+	delete mpSeparationSteering;
+	delete mpCohesionSteering;
+	delete mpGroupAlignmentSteering;
 	return this;
 }

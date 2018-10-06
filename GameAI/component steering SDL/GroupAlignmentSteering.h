@@ -18,6 +18,6 @@ protected:
 	float getTimeToAlign() { return mTimeToAlign; };
 
 private:
-	float mAlignmentRadius;
-	float mTimeToAlign;
+	float mAlignmentRadius = 40.0f;
+	float mTimeToAlign = 0.1f;
 };
