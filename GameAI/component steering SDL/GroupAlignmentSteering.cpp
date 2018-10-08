@@ -1,6 +1,7 @@
 #include <cassert>
 
 #include "GroupAlignmentSteering.h"
+#include "FaceSteering.h"
 #include "Game.h"
 #include "UnitManager.h"
 #include "Unit.h"
@@ -19,6 +20,9 @@ Steering * GroupAlignmentSteering::getSteering()
 	std::vector<Unit*> unitsInRange;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
 	PhysicsData data = pOwner->getPhysicsComponent()->getData();
+	//Face
+	mpFaceSteering = new FaceSteering(mOwnerID, mTargetLoc, mTargetID);
+	Steering* pFaceSteeringData = mpFaceSteering->getSteering();
 
 	//Get all units in range of alignment radius
 	unitsInRange = gpGame->getUnitManager()->getUnitsInRange(pOwner->getPositionComponent()->getData(), getAlignmentRadius());
@@ -28,19 +32,29 @@ Steering * GroupAlignmentSteering::getSteering()
 		//Add total velocity of all units in range
 		totalVel += (unit->getPhysicsComponent()->getVelocity() - pOwner->getPhysicsComponent()->getVelocity());
 	}
-	//Divide by total units
-	totalVel /= unitsInRange.size();
-	//divide by timeToAlign
-	averageAcc = totalVel * (1.0f /getTimeToAlign());
-	//Cap acceleration if too fast
-	if (averageAcc.getLength() > pOwner->getMaxAcc())
+	//Return if no units in range
+	if (unitsInRange.size() == 0)
 	{
-		averageAcc.normalize();
-		averageAcc *= pOwner->getMaxAcc();
+		data.acc = 0;
+		data.rotAcc = 0;
 	}
-	//Set owners acceleration to average acceleration
-	data.acc = averageAcc;
+	else
+	{
+		//Divide by total units
+		totalVel /= unitsInRange.size();
+		//divide by timeToAlign
+		averageAcc = totalVel * (1.0f / getTimeToAlign());
+		//Cap acceleration if too fast
+		if (averageAcc.getLength() > pOwner->getMaxAcc())
+		{
+			averageAcc.normalize();
+			averageAcc *= pOwner->getMaxAcc();
+		}
+		//Set owners acceleration to average acceleration
+		data.acc = averageAcc;
+	}
 	//Return steering
 	this->mData = data;
+	delete mpFaceSteering;
 	return this;
 }

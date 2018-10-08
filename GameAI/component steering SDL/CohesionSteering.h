@@ -3,6 +3,8 @@
 #include <Trackable.h>
 #include "Steering.h"
 
+class SeekSteering;
+
 class CohesionSteering : public Steering
 {
 public:
@@ -16,5 +18,5 @@ protected:
 	float getCohesionRadius() { return mCohesionRadius; };
 
 private:
-	float mCohesionRadius = 125.0f;
+	float mCohesionRadius = 300.0f;
 };

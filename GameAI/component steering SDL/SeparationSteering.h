@@ -18,8 +18,8 @@ protected:
 	float getSeperationRadius() { return mSeperationRadius; };
 
 private:
-	float mDecayCoefficient = .3f;
-	float mSeperationRadius = 30.0f;
+	float mDecayCoefficient = .8f;
+	float mSeperationRadius = 80.0f;
 };
 
 #endif // !SEPARATION_STEERING

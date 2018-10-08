@@ -28,17 +28,23 @@ Steering * SeparationSteering::getSteering()
 	{
 		//Get direction
 		direction = pOwner->getPositionComponent()->getPosition() - unit->getPositionComponent()->getPosition();
-		//Get distance apart
+		//Get distance
 		distance = direction.getLength();
-		//If within seperation radius
-		if (distance < getSeperationRadius())
-		{
-			//Get strength
-			strength = std::fmin(getDecayCoefficient() / pow(distance, 2), pOwner->getMaxAcc());
-			//Add acceleration
-			direction.normalize();
-			data.acc += direction * strength;
-		}
+		//Get strength
+		strength = std::fmin(getDecayCoefficient() / pow(distance, 2), pOwner->getMaxAcc());
+		//Add acceleration
+		direction.normalize();
+		data.acc += direction * strength;
+	}
+	//Return if no units in range
+	if (unitsInRange.size() == 0)
+	{
+		data.acc = 0;
+		data.rotAcc = 0;
+	}
+	else
+	{
+		data.acc /= unitsInRange.size();
 	}
 	//Return steering
 	this->mData = data;

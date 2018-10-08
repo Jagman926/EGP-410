@@ -16,7 +16,6 @@ CohesionSteering::CohesionSteering(const UnitID & ownerID, const Vector2D & targ
 Steering * CohesionSteering::getSteering()
 {
 	Vector2D totalPositions = (0.0f,0.0f), direction;
-	float distance;
 	std::vector<Unit*> unitsInRange;
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
 	PhysicsData data = pOwner->getPhysicsComponent()->getData();
@@ -29,16 +28,23 @@ Steering * CohesionSteering::getSteering()
 		//Total positions of all units in range
 		totalPositions += unit->getPositionComponent()->getPosition();
 	}
-	//Average out positions
-	totalPositions /= unitsInRange.size();
-	//get direction to position
-	direction = pOwner->getPositionComponent()->getPosition() - totalPositions;
-	//Get distance apart
-	distance = direction.getLength();
-	//Add acceleration
-	direction.normalize();
-	data.acc += direction * pOwner->getMaxAcc();
-	
+	//Return if no units in range
+	if (unitsInRange.size() == 0)
+	{
+		data.acc = 0;
+		data.rotAcc = 0;
+	}
+	else
+	{
+		//Average out positions
+		totalPositions /= unitsInRange.size();
+		//get direction to position
+		direction = totalPositions - pOwner->getPositionComponent()->getPosition();
+		//Add acceleration
+		direction.normalize();
+		data.acc = direction * pOwner->getMaxAcc();
+	}
+
 	//Return steering
 	this->mData = data;
 	return this;

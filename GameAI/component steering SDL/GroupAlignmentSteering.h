@@ -3,6 +3,8 @@
 #include <Trackable.h>
 #include "Steering.h"
 
+class FaceSteering;
+
 class GroupAlignmentSteering : public Steering
 {
 public:
@@ -14,10 +16,12 @@ public:
 	void setTimeToAlign(float time) { mTimeToAlign = time; };
 
 protected:
+	FaceSteering* mpFaceSteering;
+	//
 	float getAlignmentRadius() { return mAlignmentRadius; };
 	float getTimeToAlign() { return mTimeToAlign; };
 
 private:
-	float mAlignmentRadius = 40.0f;
+	float mAlignmentRadius = 60.0f;
 	float mTimeToAlign = 0.1f;
 };

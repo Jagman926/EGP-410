@@ -33,18 +33,18 @@ Steering * FlockingSteering::getSteering()
 	Steering* pGroupAlignmentSteeringData = mpGroupAlignmentSteering->getSteering();
 
 	//Set base wander steering
-	data.acc = pWanderSteeringData->getData().acc;
-	data.rotAcc = pWanderSteeringData->getData().rotAcc;
+	data.acc += pWanderSteeringData->getData().acc;
+	data.rotAcc += pWanderSteeringData->getData().rotAcc;
 	//Add steerings with weights
 	//Separation
-	data.acc = pSeparationSteeringData->getData().acc * getSeparationWeight();
-	data.rotAcc = pWanderSteeringData->getData().rotAcc * getSeparationWeight();
+	data.acc += pSeparationSteeringData->getData().acc * getSeparationWeight();
+	data.rotAcc += pSeparationSteeringData->getData().rotAcc * getSeparationWeight();
 	//Cohesion
-	data.acc = pCohesionSteeringData->getData().acc * getCohesionWeight();
-	data.rotAcc = pCohesionSteeringData->getData().rotAcc * getCohesionWeight();
+	data.acc += pCohesionSteeringData->getData().acc * getCohesionWeight();
+	data.rotAcc += pCohesionSteeringData->getData().rotAcc * getCohesionWeight();
 	//Alignment
-	data.acc = pGroupAlignmentSteeringData->getData().acc * getAlignmentWeight();
-	data.rotAcc = pGroupAlignmentSteeringData->getData().rotAcc * getAlignmentWeight();
+	data.acc += pGroupAlignmentSteeringData->getData().acc * getAlignmentWeight();
+	data.rotAcc += pGroupAlignmentSteeringData->getData().rotAcc * getAlignmentWeight();
 
 	//cap acceleration
 	if (data.acc.getLength() > pOwner->getMaxAcc())
