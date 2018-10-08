@@ -44,12 +44,6 @@ Steering * GroupAlignmentSteering::getSteering()
 		totalVel /= unitsInRange.size();
 		//divide by timeToAlign
 		averageAcc = totalVel * (1.0f / getTimeToAlign());
-		//Cap acceleration if too fast
-		if (averageAcc.getLength() > pOwner->getMaxAcc())
-		{
-			averageAcc.normalize();
-			averageAcc *= pOwner->getMaxAcc();
-		}
 		//Set owners acceleration to average acceleration
 		data.acc = averageAcc;
 	}

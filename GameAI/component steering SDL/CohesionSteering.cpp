@@ -41,8 +41,7 @@ Steering * CohesionSteering::getSteering()
 		//get direction to position
 		direction = totalPositions - pOwner->getPositionComponent()->getPosition();
 		//Add acceleration
-		direction.normalize();
-		data.acc = direction * pOwner->getMaxAcc();
+		data.acc = direction;
 	}
 
 	//Return steering

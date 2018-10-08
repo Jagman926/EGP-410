@@ -31,7 +31,7 @@ Steering * SeparationSteering::getSteering()
 		//Get distance
 		distance = direction.getLength();
 		//Get strength
-		strength = std::fmin(getDecayCoefficient() / pow(distance, 2), pOwner->getMaxAcc());
+		strength = std::fmin(getDecayCoefficient() / distance * distance, pOwner->getMaxAcc());
 		//Add acceleration
 		direction.normalize();
 		data.acc += direction * strength;
@@ -42,10 +42,7 @@ Steering * SeparationSteering::getSteering()
 		data.acc = 0;
 		data.rotAcc = 0;
 	}
-	else
-	{
-		data.acc /= unitsInRange.size();
-	}
+
 	//Return steering
 	this->mData = data;
 	return this;

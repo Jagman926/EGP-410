@@ -33,8 +33,8 @@ Steering * FlockingSteering::getSteering()
 	Steering* pGroupAlignmentSteeringData = mpGroupAlignmentSteering->getSteering();
 
 	//Set base wander steering
-	data.acc += pWanderSteeringData->getData().acc;
-	data.rotAcc += pWanderSteeringData->getData().rotAcc;
+	//data.acc += pWanderSteeringData->getData().acc;
+	//data.rotAcc += pWanderSteeringData->getData().rotAcc;
 	//Add steerings with weights
 	//Separation
 	data.acc += pSeparationSteeringData->getData().acc * getSeparationWeight();
@@ -45,6 +45,9 @@ Steering * FlockingSteering::getSteering()
 	//Alignment
 	data.acc += pGroupAlignmentSteeringData->getData().acc * getAlignmentWeight();
 	data.rotAcc += pGroupAlignmentSteeringData->getData().rotAcc * getAlignmentWeight();
+
+	data.acc.normalize();
+	data.acc *= data.maxAccMagnitude;
 
 	//cap acceleration
 	if (data.acc.getLength() > pOwner->getMaxAcc())

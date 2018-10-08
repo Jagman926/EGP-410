@@ -15,7 +15,8 @@ public:
 	//
 	virtual Steering* getSteering();
 	//
-	void setSeparationWeight(float weight) { mSeparationWeight = weight; };
+	void setSeparationWeight(float 
+		weight) { mSeparationWeight = weight; };
 	void setCohesionWeight(float weight) { mCohesionWeight = weight; };
 	void setAlignmentWeight(float weight) { mAlignmentWeight = weight; };
 
@@ -32,5 +33,5 @@ protected:
 private:
 	float mSeparationWeight = 0.50f;
 	float mCohesionWeight = 0.40f;
-	float mAlignmentWeight = 0.10f;
+	float mAlignmentWeight = 0.80f;
 };
