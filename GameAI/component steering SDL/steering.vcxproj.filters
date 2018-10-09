@@ -112,6 +112,9 @@
     <ClCompile Include="AdjustBehaviorWeights.cpp">
       <Filter>Source Files\Messaging\Meesages</Filter>
     </ClCompile>
+    <ClCompile Include="AddMultipleUnits.cpp">
+      <Filter>Source Files\Messaging\Meesages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -223,6 +226,9 @@
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
     <ClInclude Include="AdjustBehaviorWeights.h">
+      <Filter>Header Files\Messaging\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="AddMultipleUnits.h">
       <Filter>Header Files\Messaging\Messages</Filter>
     </ClInclude>
   </ItemGroup>

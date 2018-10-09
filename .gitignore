@@ -188,3 +188,6 @@ GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/b0d3298ee574e12c/EXI
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/d0303b141a132cd2/OUTPUTMOUSECOORDSMESSAGE.ipch
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/e0315fc91ddd27eb/ADJUSTBEHAVIORWEIGHTS.ipch
 GameAI/component steering SDL/Debug/AdjustBehaviorWeights.obj
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/bbc46012026f57b5/ADDMULTIPLEUNITS.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/ce470112a0ccacc6/ADDMULTIPLEUNITS.ipch
+GameAI/component steering SDL/Debug/AddMultipleUnits.obj

@@ -10,6 +10,7 @@
 #include "AddRandomUnitMessage.h"
 #include "ExitGameMessage.h"
 #include "AdjustBehaviorWeights.h"
+#include "AddMultipleUnits.h"
 
 InputSystem::InputSystem()
 {
@@ -65,6 +66,10 @@ void InputSystem::update()
 				break;
 			case Y_KEY:
 				pMessage = new AdjustBehaviorWeights('y');
+				mpGameMessageManager->addMessage(pMessage, 0);
+				break;
+			case A_KEY:
+				pMessage = new AddMultipleUnits();
 				mpGameMessageManager->addMessage(pMessage, 0);
 				break;
 			case D_KEY:

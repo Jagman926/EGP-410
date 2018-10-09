@@ -26,7 +26,23 @@ Git Link: https://github.com/Jagman926/EGP-410
 
  #### "Enter" Key 
 
- > Spawns new unit at random position with a WanderAndChase Steering
+ > Spawns new unit at random position with Flocking Steering
+
+ #### "Q and W" Keys 
+
+ > Increase(Q) and Decrease(W) separation weight
+
+ #### "E and R" Keys 
+
+ > Increase(E) and Decrease(R) cohesion weight
+
+ #### "T and Y" Keys 
+
+ > Increase(T) and Decrease(Y) alignment weight
+
+ #### "A" Key
+
+ > Spawns 10 random units with Flocking
 
  #### "D" Key
 
