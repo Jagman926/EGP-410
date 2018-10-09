@@ -23,6 +23,8 @@ private:
 		W_KEY = SDLK_w,
 		E_KEY = SDLK_e,
 		R_KEY = SDLK_r,
+		T_KEY = SDLK_t,
+		Y_KEY = SDLK_y,
 		D_KEY = SDLK_d,
 		ENTER_KEY = SDLK_RETURN,
 		ESC_KEY = SDLK_ESCAPE,

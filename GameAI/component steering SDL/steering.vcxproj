@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddRandomUnitMessage.h" />
+    <ClInclude Include="AdjustBehaviorWeights.h" />
     <ClInclude Include="ArriveAndFace.h" />
     <ClInclude Include="ArriveSteering.h" />
     <ClInclude Include="CohesionSteering.h" />
@@ -50,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddRandomUnitMessage.cpp" />
+    <ClCompile Include="AdjustBehaviorWeights.cpp" />
     <ClCompile Include="ArriveAndFace.cpp" />
     <ClCompile Include="ArriveSteering.cpp" />
     <ClCompile Include="CohesionSteering.cpp" />

@@ -9,6 +9,7 @@
 #include "DeleteRandomUnitMessage.h"
 #include "AddRandomUnitMessage.h"
 #include "ExitGameMessage.h"
+#include "AdjustBehaviorWeights.h"
 
 InputSystem::InputSystem()
 {
@@ -42,6 +43,30 @@ void InputSystem::update()
 			int keyCode = event.key.keysym.sym;
 			switch (keyCode)
 			{
+			case Q_KEY:
+				pMessage = new AdjustBehaviorWeights('q');
+				mpGameMessageManager->addMessage(pMessage, 0);
+				break;
+			case W_KEY:
+				pMessage = new AdjustBehaviorWeights('w');
+				mpGameMessageManager->addMessage(pMessage, 0);
+				break;
+			case E_KEY:
+				pMessage = new AdjustBehaviorWeights('e');
+				mpGameMessageManager->addMessage(pMessage, 0);
+				break;
+			case R_KEY:
+				pMessage = new AdjustBehaviorWeights('r');
+				mpGameMessageManager->addMessage(pMessage, 0);
+				break;
+			case T_KEY:
+				pMessage = new AdjustBehaviorWeights('t');
+				mpGameMessageManager->addMessage(pMessage, 0);
+				break;
+			case Y_KEY:
+				pMessage = new AdjustBehaviorWeights('y');
+				mpGameMessageManager->addMessage(pMessage, 0);
+				break;
 			case D_KEY:
 				pMessage = new DeleteRandomUnitMessage();
 				mpGameMessageManager->addMessage(pMessage, 0);

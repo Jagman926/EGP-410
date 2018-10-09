@@ -2,6 +2,7 @@
 
 #include <Trackable.h>
 #include "Steering.h"
+#include "Game.h"
 
 class SeparationSteering;
 class CohesionSteering;

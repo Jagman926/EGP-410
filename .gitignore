@@ -178,3 +178,13 @@ GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/21faf039ff5be83d/COM
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/70f590e65ea0a9ea/ALIGNSTEERING.ipch
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/f83c31253f4e2f6f/UNIT.ipch
 GameAI/component steering SDL/Debug/AlignSteering.obj
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/2af068624ab5e896/ADDRANDOMUNITMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/3b26ff8f2356c183/PLAYERMOVETOMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/45a2620a0be06288/ADJUSTBEHAVIORWEIGHTS.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/5352232c3e52c6d2/INPUTSYSTEM.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/89a3c19dfe2d1c37/GAMEMESSAGEMANAGER.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/9c74ed8ee5138ccc/GAMEMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/b0d3298ee574e12c/EXITGAMEMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/d0303b141a132cd2/OUTPUTMOUSECOORDSMESSAGE.ipch
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/e0315fc91ddd27eb/ADJUSTBEHAVIORWEIGHTS.ipch
+GameAI/component steering SDL/Debug/AdjustBehaviorWeights.obj

@@ -177,6 +177,11 @@ void Game::processLoop()
 	//get Input
 	mpInputSystem->update();
 
+	//Weight GUI
+	getGraphicsSystem()->writeText(*mpFont, 0.0f, 20.0f, "Separation: " + std::to_string(mSeparationWeight), BLACK_COLOR);
+	getGraphicsSystem()->writeText(*mpFont, 0.0f, 40.0f, "Cohesion: " + std::to_string(mCohesionWeight), BLACK_COLOR);
+	getGraphicsSystem()->writeText(*mpFont, 0.0f, 60.0f, "Alignment: " + std::to_string(mAlignmentWeight), BLACK_COLOR);
+
 	//render current frame
 	mpGraphicsSystem->swap();
 
@@ -230,9 +235,9 @@ void Game::UpdateBehaviorWeights()
 	//Open file
 	weightFile.open("WeightData.txt");
 	//Write variables to file
-	weightFile << getSeparationWeight() << "\n";
-	weightFile << getCohesionWeight() << "\n";
-	weightFile << getAlignmentWeight() << "\n";
+	weightFile << "Separation: " << getSeparationWeight() << "\n";
+	weightFile << "Cohesion: " << getCohesionWeight() << "\n";
+	weightFile << "Alignment: " << getAlignmentWeight() << "\n";
 	//close file
 	weightFile.close();
 }

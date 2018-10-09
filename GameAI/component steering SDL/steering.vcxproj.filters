@@ -109,6 +109,9 @@
     <ClCompile Include="FlockingSteering.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
+    <ClCompile Include="AdjustBehaviorWeights.cpp">
+      <Filter>Source Files\Messaging\Meesages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -218,6 +221,9 @@
     </ClInclude>
     <ClInclude Include="FlockingSteering.h">
       <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="AdjustBehaviorWeights.h">
+      <Filter>Header Files\Messaging\Messages</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
