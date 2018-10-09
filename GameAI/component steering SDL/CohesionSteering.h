@@ -18,5 +18,5 @@ protected:
 	float getCohesionRadius() { return mCohesionRadius; };
 
 private:
-	float mCohesionRadius = 150.0f;
+	float mCohesionRadius = 200.0f;
 };

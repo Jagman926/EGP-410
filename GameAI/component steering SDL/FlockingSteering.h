@@ -3,10 +3,10 @@
 #include <Trackable.h>
 #include "Steering.h"
 
-class WanderSteering;
 class SeparationSteering;
 class CohesionSteering;
 class GroupAlignmentSteering;
+class FaceSteering;
 
 class FlockingSteering : public Steering
 {
@@ -15,23 +15,20 @@ public:
 	//
 	virtual Steering* getSteering();
 	//
-	void setSeparationWeight(float 
-		weight) { mSeparationWeight = weight; };
-	void setCohesionWeight(float weight) { mCohesionWeight = weight; };
-	void setAlignmentWeight(float weight) { mAlignmentWeight = weight; };
+	float getSeparationWeight() { return gpGame->getSeparationWeight(); };
+	float getCohesionWeight() { return gpGame->getCohesionWeight(); };
+	float getAlignmentWeight() { return gpGame->getAlignmentWeight(); };
 
 protected:
-	WanderSteering* mpWanderSteering;
 	SeparationSteering* mpSeparationSteering;
 	CohesionSteering* mpCohesionSteering;
 	GroupAlignmentSteering* mpGroupAlignmentSteering;
-	//
-	float getSeparationWeight() { return mSeparationWeight; };
-	float getCohesionWeight() { return mCohesionWeight; };
-	float getAlignmentWeight() { return mAlignmentWeight; };
+	FaceSteering* mpFaceSteering;
 
 private:
-	float mSeparationWeight = 0.50f;
-	float mCohesionWeight = 0.40f;
-	float mAlignmentWeight = 0.80f;
+	//Wander
+	const float PI = 3.1415926f;
+	float mWanderOffset = 130.0f;
+	float mWanderRadius = 90.0f;
+	float mWanderRate = 2.0f * PI;
 };

@@ -73,7 +73,7 @@ Unit* UnitManager::createRandomUnit(const Sprite& sprite)
 	Unit* pUnit = createUnit(sprite, true, PositionData(Vector2D(posX,posY),0));
 	if (pUnit != NULL)
 	{
-		pUnit->setShowTarget(true);
+		pUnit->setShowTarget(false);
 		pUnit->setSteering(Steering::FLOCKING, ZERO_VECTOR2D);
 	}
 	return pUnit;

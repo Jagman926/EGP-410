@@ -19,7 +19,7 @@ protected:
 
 private:
 	float mDecayCoefficient = 100.0f;
-	float mSeperationRadius = 80.0f;
+	float mSeperationRadius = 25.0f;
 };
 
 #endif // !SEPARATION_STEERING

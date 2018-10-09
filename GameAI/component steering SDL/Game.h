@@ -49,6 +49,17 @@ public:
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
 	inline Font* getFont() { return mpFont; };
 	inline void shouldExit() { mShouldExit = true; };
+	//File system
+	void LoadBehaviorWeights();
+	void UpdateBehaviorWeights();
+	//
+	void setSeparationWeight(float weight) { mSeparationWeight = weight; };
+	void setCohesionWeight(float weight) { mCohesionWeight = weight; };
+	void setAlignmentWeight(float weight) { mAlignmentWeight = weight; };
+	//
+	float getSeparationWeight() { return mSeparationWeight; };
+	float getCohesionWeight() { return mCohesionWeight; };
+	float getAlignmentWeight() { return mAlignmentWeight; };
 
 private:
 	GraphicsSystem* mpGraphicsSystem;
@@ -62,7 +73,10 @@ private:
 	Timer* mpMasterTimer;
 	Font* mpFont;
 	bool mShouldExit;
-
+	//
+	float mSeparationWeight = 0.80f;
+	float mCohesionWeight = 1.00f;
+	float mAlignmentWeight = 0.50f;
 	//should be somewhere else
 	GraphicsBufferID mBackgroundBufferID = "woods";
 	GraphicsBufferID mPlayerIconBufferID = "player";

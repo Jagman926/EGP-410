@@ -40,8 +40,6 @@ Steering * FaceSteering::getSteering()
 	
 	if (rotationSize < getTargetRadius())
 	{
-		//stop rotating
-		return nullptr;
 	}
 	if (rotationSize > getSlowRadius())
 	{
@@ -66,8 +64,6 @@ Steering * FaceSteering::getSteering()
 		data.rotAcc /= angularAcc;
 		data.rotAcc *= data.maxRotAcc;
 	}
-
-	data.acc = 0;
 	//Set data
 	this->mData = data;
 	return this;

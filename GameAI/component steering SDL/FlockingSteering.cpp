@@ -1,10 +1,10 @@
 #include <cassert>
 
-#include "WanderSteering.h"
 #include "SeparationSteering.h"
 #include "CohesionSteering.h"
 #include "GroupAlignmentSteering.h"
 #include "FlockingSteering.h"
+#include "FaceSteering.h"
 #include "Game.h"
 #include "UnitManager.h"
 #include "Unit.h"
@@ -20,52 +20,57 @@ FlockingSteering::FlockingSteering(const UnitID & ownerID, const Vector2D & targ
 Steering * FlockingSteering::getSteering()
 {
 	Unit* pOwner = gpGame->getUnitManager()->getUnit(mOwnerID);
-	PhysicsData data = pOwner->getPhysicsComponent()->getData();
+	PhysicsData data;
 	//Get Steering pointers
-	mpWanderSteering = new WanderSteering(mOwnerID, mTargetLoc, mTargetID);
 	mpSeparationSteering = new SeparationSteering(mOwnerID, mTargetLoc, mTargetID);
 	mpCohesionSteering = new CohesionSteering(mOwnerID, mTargetLoc, mTargetID);
 	mpGroupAlignmentSteering = new GroupAlignmentSteering(mOwnerID, mTargetLoc, mTargetID);
 	//Assign steering data
-	Steering* pWanderSteeringData = mpWanderSteering->getSteering();
 	Steering* pSeparationSteeringData = mpSeparationSteering->getSteering();
 	Steering* pCohesionSteeringData = mpCohesionSteering->getSteering();
 	Steering* pGroupAlignmentSteeringData = mpGroupAlignmentSteering->getSteering();
+	Steering* pFaceSteeringData;
 
-	//Set base wander steering
-	//data.acc += pWanderSteeringData->getData().acc;
-	//data.rotAcc += pWanderSteeringData->getData().rotAcc;
+	//Wander
+	////////////////////////////////////////////////////////////////////////////
+	//Orientations
+	float wanderOri = 0, targetOri = 0;
+
+	//Update wander rotation
+	wanderOri += genRandomBinomial() * mWanderRate;
+	//Calculate the combined target orientation
+	targetOri = wanderOri + pOwner->getFacing();
+	//Calculate the center of the wander cirlce
+	Vector2D characterOriVec = Vector2D(cos(pOwner->getFacing()), sin(pOwner->getFacing()));
+	mTargetLoc = pOwner->getPositionComponent()->getPosition() + characterOriVec * mWanderOffset;
+	//Calculate the target location
+	Vector2D targetOriVec = Vector2D(cos(targetOri), sin(targetOri));
+	mTargetLoc += targetOriVec * mWanderRadius * .3;
+	////////////////////////////////////////////////////////////////////////////////
 	//Add steerings with weights
+	Vector2D separation, cohesion, alignment;
+
 	//Separation
-	data.acc += pSeparationSteeringData->getData().acc * getSeparationWeight();
-	data.rotAcc += pSeparationSteeringData->getData().rotAcc * getSeparationWeight();
+	separation = pSeparationSteeringData->getData().acc * getSeparationWeight();
 	//Cohesion
-	data.acc += pCohesionSteeringData->getData().acc * getCohesionWeight();
-	data.rotAcc += pCohesionSteeringData->getData().rotAcc * getCohesionWeight();
+	cohesion = pCohesionSteeringData->getData().acc * getCohesionWeight();
 	//Alignment
-	data.acc += pGroupAlignmentSteeringData->getData().acc * getAlignmentWeight();
-	data.rotAcc += pGroupAlignmentSteeringData->getData().rotAcc * getAlignmentWeight();
+	alignment = pGroupAlignmentSteeringData->getData().acc * getAlignmentWeight();
 
-	data.acc.normalize();
-	data.acc *= data.maxAccMagnitude;
+	//Total acceleration
+	mTargetLoc += separation + cohesion + alignment;
 
-	//cap acceleration
-	if (data.acc.getLength() > pOwner->getMaxAcc())
-	{
-		data.acc.normalize();
-		data.acc *= pOwner->getMaxAcc();
-	}
-	//cap rotation acceleration
-	if (data.rotAcc > pOwner->getMaxRotAcc())
-	{
-		data.rotAcc = pOwner->getMaxRotAcc();
-	}
+	//Normalize and face
+	mTargetLoc.normalize();
+	FaceSteering mFaceSteering(mOwnerID, mTargetLoc + pOwner->getPositionComponent()->getPosition(), mTargetID);
+	data = mFaceSteering.getSteering()->getData();
+	data.acc = mTargetLoc * pOwner->getMaxAcc();
 
 	//Return steering
 	this->mData = data;
-	delete mpWanderSteering;
 	delete mpSeparationSteering;
 	delete mpCohesionSteering;
 	delete mpGroupAlignmentSteering;
 	return this;
 }
+

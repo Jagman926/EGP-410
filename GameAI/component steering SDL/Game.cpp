@@ -2,6 +2,8 @@
 #include <assert.h>
 
 #include <sstream>
+#include <iostream>
+#include <fstream>
 #include <SDL.h>
 #include <time.h>
 #include <vector>
@@ -19,6 +21,7 @@
 #include "PlayerMoveToMessage.h"
 #include "ComponentManager.h"
 #include "UnitManager.h"
+#include "FlockingSteering.h"
 
 Game* gpGame = NULL;
 
@@ -114,6 +117,9 @@ bool Game::init()
 	pUnit->setShowTarget(true);
 	pUnit->setSteering(Steering::ARRIVE_FACE, ZERO_VECTOR2D);
 
+	//Flocking
+	LoadBehaviorWeights();
+
 	return true;
 }
 
@@ -180,6 +186,8 @@ bool Game::endLoop()
 {
 	//mpMasterTimer->start();
 	mpLoopTimer->sleepUntilElapsed( LOOP_TARGET_TIME );
+	//Update weight files
+	UpdateBehaviorWeights();
 	return mShouldExit;
 }
 
@@ -192,5 +200,40 @@ float genRandomFloat()
 {
 	float r = (float)rand()/(float)RAND_MAX;
 	return r;
+}
+
+void Game::LoadBehaviorWeights()
+{
+	std::string line;
+	std::ifstream weightFile("WeightData.txt");
+	//Open file
+	if (weightFile.is_open())
+	{
+		//Separation
+		weightFile.ignore(256, ':');
+		std::getline(weightFile, line);
+		setSeparationWeight(stof(line));
+		//Cohesion
+		weightFile.ignore(256, ':');
+		std::getline(weightFile, line);
+		setCohesionWeight(stof(line));
+		//Alignment
+		weightFile.ignore(256, ':');
+		std::getline(weightFile, line);
+		setAlignmentWeight(stof(line));
+	}
+}
+
+void Game::UpdateBehaviorWeights()
+{
+	std::ofstream weightFile;
+	//Open file
+	weightFile.open("WeightData.txt");
+	//Write variables to file
+	weightFile << getSeparationWeight() << "\n";
+	weightFile << getCohesionWeight() << "\n";
+	weightFile << getAlignmentWeight() << "\n";
+	//close file
+	weightFile.close();
 }
 
