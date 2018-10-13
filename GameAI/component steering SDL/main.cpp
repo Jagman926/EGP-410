@@ -70,8 +70,8 @@ int main(int argc, char **argv)
 	gpGame->cleanup();
 	delete gpGame;
 	gpGame = NULL;
-
 	delete gpPerformanceTracker;
+
 	MemoryTracker::getInstance()->reportAllocations( cout );
 	system("pause");
 

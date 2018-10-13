@@ -21,23 +21,43 @@
 #include <MemoryTracker.h>
 #include <PerformanceTracker.h>
 
+using namespace std;
+
 PerformanceTracker* gpPerformanceTracker = NULL;
 
 int main(int argc, char **argv)
 {
 	gpPerformanceTracker = new PerformanceTracker();
+	gpPerformanceTracker->startTracking("init");
 
 	gpGame = new GameApp();
 
 	gpGame->init();
 
+	gpPerformanceTracker->stopTracking("init");
+	cout << "initialization took:" << gpPerformanceTracker->getElapsedTime("init") << "ms\n";
+
 	bool shouldExit = false;
 
 	while( !shouldExit )
 	{
+		gpPerformanceTracker->clearTracker("loop");
+		gpPerformanceTracker->startTracking("loop");
+
 		gpGame->beginLoop();
+
+		gpPerformanceTracker->clearTracker("draw");
+		gpPerformanceTracker->startTracking("draw");
+
 		gpGame->processLoop();
+
+		gpPerformanceTracker->stopTracking("draw");
+
 		shouldExit = gpGame->endLoop();
+
+		gpPerformanceTracker->stopTracking("loop");
+		//cout << "loop took:" << gpPerformanceTracker->getElapsedTime("loop") << "ms";
+		//cout << "draw took:" << gpPerformanceTracker->getElapsedTime("draw") << "ms\n";
 	}
 
 	//cleanup
@@ -45,8 +65,7 @@ int main(int argc, char **argv)
 	delete gpGame;
 	delete gpPerformanceTracker;
 
-	gMemoryTracker.reportAllocations( std::cout );
-
+	MemoryTracker::getInstance()->reportAllocations(cout);
 	system("pause");
 
 	return 0;

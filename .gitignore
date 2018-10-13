@@ -191,3 +191,43 @@ GameAI/component steering SDL/Debug/AdjustBehaviorWeights.obj
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/bbc46012026f57b5/ADDMULTIPLEUNITS.ipch
 GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/ce470112a0ccacc6/ADDMULTIPLEUNITS.ipch
 GameAI/component steering SDL/Debug/AddMultipleUnits.obj
+GameAI/component steering SDL/.vs/steering/v15/ipch/AutoPCH/66d8cd85e50762df/MAIN.ipch
+GameAI/component steering SDL/Debug/pathfinding.exe
+GameAI/component steering SDL/Debug/pathfinding.ilk
+GameAI/component steering SDL/Debug/pathfinding.pdb
+GameAI/pathfinding/game/Debug/pathfinding.tlog/CL.command.1.tlog
+GameAI/pathfinding/game/Debug/pathfinding.tlog/CL.read.1.tlog
+GameAI/pathfinding/game/Debug/pathfinding.tlog/CL.write.1.tlog
+GameAI/pathfinding/game/Debug/pathfinding.tlog/link.command.1.tlog
+GameAI/pathfinding/game/Debug/pathfinding.tlog/link.read.1.tlog
+GameAI/pathfinding/game/Debug/pathfinding.tlog/link.write.1.tlog
+GameAI/pathfinding/game/Debug/pathfinding.tlog/pathfinding.lastbuildstate
+GameAI/pathfinding/game/Debug/Color.obj
+GameAI/pathfinding/game/Debug/Connection.obj
+GameAI/pathfinding/game/Debug/DebugDisplay.obj
+GameAI/pathfinding/game/Debug/DepthFirstPathfinder.obj
+GameAI/pathfinding/game/Debug/Font.obj
+GameAI/pathfinding/game/Debug/Game.obj
+GameAI/pathfinding/game/Debug/GameApp.obj
+GameAI/pathfinding/game/Debug/GameMessage.obj
+GameAI/pathfinding/game/Debug/GameMessageManager.obj
+GameAI/pathfinding/game/Debug/Graph.obj
+GameAI/pathfinding/game/Debug/GraphicsBuffer.obj
+GameAI/pathfinding/game/Debug/GraphicsBufferManager.obj
+GameAI/pathfinding/game/Debug/GraphicsSystem.obj
+GameAI/pathfinding/game/Debug/Grid.obj
+GameAI/pathfinding/game/Debug/GridGraph.obj
+GameAI/pathfinding/game/Debug/GridPathfinder.obj
+GameAI/pathfinding/game/Debug/GridVisualizer.obj
+GameAI/pathfinding/game/Debug/main.obj
+GameAI/pathfinding/game/Debug/Node.obj
+GameAI/pathfinding/game/Debug/Path.obj
+GameAI/pathfinding/game/Debug/Pathfinder.obj
+GameAI/pathfinding/game/Debug/pathfinding.log
+GameAI/pathfinding/game/Debug/PathfindingDebugContent.obj
+GameAI/pathfinding/game/Debug/PathToMessage.obj
+GameAI/pathfinding/game/Debug/Renderer.obj
+GameAI/pathfinding/game/Debug/Sprite.obj
+GameAI/pathfinding/game/Debug/SpriteManager.obj
+GameAI/pathfinding/game/Debug/vc141.idb
+GameAI/pathfinding/game/Debug/vc141.pdb
