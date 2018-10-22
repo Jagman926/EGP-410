@@ -37,6 +37,7 @@ public:
 	virtual void processLoop();
 	virtual bool endLoop();
 
+	void setPathfinder(GridPathfinder* pathFinder) { mpPathfinder = pathFinder; };
 	//accessors
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
 	inline GridVisualizer* getGridVisualizer() { return mpGridVisualizer; };

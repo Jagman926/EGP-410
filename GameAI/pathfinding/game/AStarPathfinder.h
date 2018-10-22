@@ -22,25 +22,36 @@ public:
 	Path* findPath(Node* pFrom, Node* pTo);
 
 private:
-	struct PathHeuristic
+	//Heuristic struct
+	struct Heuristic
 	{
-		Node* goalNode;
-		Vector2D goalPos;
+		Node* toNode;
+		Vector2D toNodePos;
 
 		void setGoal(Node* goal)
 		{
-			goalNode = goal;
+			//Set toNode
+			toNode = goal;
+			//Get toNode Position
 			GameApp * pGame = dynamic_cast<GameApp*>(gpGame);
-			goalPos = pGame->getGrid()->getULCornerOfSquare(goalNode->getId());
+			toNodePos = pGame->getGrid()->getULCornerOfSquare(toNode->getId());
 		};
 
-		float estimate(Node* node)
+		float getHeuristic(Node* node)
 		{
-			Vector2D nodePos;
+			Vector2D currentNodePos;
+			//Get currentNode Position
 			GameApp * pGame = dynamic_cast<GameApp*>(gpGame);
-			nodePos = pGame->getGrid()->getULCornerOfSquare(node->getId());
-			//Manhattan diatance on a square grid
-			return abs(nodePos.getX() - goalPos.getX()) + abs(nodePos.getY() - goalPos.getY());
+			currentNodePos = pGame->getGrid()->getULCornerOfSquare(node->getId());
+
+			//Heuristic Types
+			//----------------------
+
+			//Manhattan distance on a square grid
+			//return abs(nodePos.getX() - goalPos.getX()) + abs(nodePos.getY() - goalPos.getY());
+
+			//Linear distance
+			return (currentNodePos - toNodePos).getLength();
 		};
 	} mHeuristic;
 

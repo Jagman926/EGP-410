@@ -17,7 +17,4 @@ public:
 	~DijkstraPathfinder();
 	//
 	Path* findPath(Node* pFrom, Node* pTo);
-
-private:
-	NodeRecord mNodeRecord;
 };

@@ -239,9 +239,6 @@
     <ClCompile Include="DijkstraPathfinder.cpp">
       <Filter>Source Files\pathfinding</Filter>
     </ClCompile>
-    <ClCompile Include="PriorityQueue.cpp">
-      <Filter>Source Files\pathfinding\Containers</Filter>
-    </ClCompile>
     <ClCompile Include="AStarPathfinder.cpp">
       <Filter>Source Files\pathfinding</Filter>
     </ClCompile>

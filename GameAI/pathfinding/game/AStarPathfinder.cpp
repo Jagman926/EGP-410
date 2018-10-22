@@ -13,16 +13,16 @@
 AStarPathfinder::AStarPathfinder(Graph * pGraph)
 	:GridPathfinder(dynamic_cast<GridGraph*>(pGraph))
 {
-#ifdef VISUALIZE_PATH
+	#ifdef VISUALIZE_PATH
 	mpPath = NULL;
-#endif
+	#endif
 }
 
 AStarPathfinder::~AStarPathfinder()
 {
-#ifdef VISUALIZE_PATH
+	#ifdef VISUALIZE_PATH
 	delete mpPath;
-#endif
+	#endif
 }
 
 Path * AStarPathfinder::findPath(Node * pFrom, Node * pTo)
@@ -32,22 +32,22 @@ Path * AStarPathfinder::findPath(Node * pFrom, Node * pTo)
 	gpPerformanceTracker->startTracking("path");
 
 	//Reset and clear path
-#ifdef VISUALIZE_PATH
+	#ifdef VISUALIZE_PATH
 	delete mpPath;
 	mVisitedNodes.clear();
-#endif
+	#endif
 
 	//Create path
 	Path* pPath = new Path();
 	//Initialize the open and closed lists
 	PriorityQueue<NodeRecord, std::vector<NodeRecord>, CompareEstimatedCost> nodesToVisit, visitedNodes;
-	//Node* endNode
+	//endNode variables
 	Node* endNode;
+	float endNodeHeuristic, endNodeCost;
 	//Node records
 	NodeRecord currentRecord = {}, endNodeRecord = {};
-	//End heuristic and cost
-	float endNodeHeuristic, endNodeCost;
 
+	//Set heuristic goal
 	mHeuristic.setGoal(pTo);
 
 	//Initialize the record for the start node
@@ -55,14 +55,15 @@ Path * AStarPathfinder::findPath(Node * pFrom, Node * pTo)
 	startRecord.mNode = pFrom;
 	startRecord.mConnection = nullptr;
 	startRecord.mCostSoFar = 0;
-	startRecord.mEstimatedTotalCost = mHeuristic.estimate(pFrom);
+	startRecord.mEstimatedTotalCost = mHeuristic.getHeuristic(pFrom);
 
+	//Add start to open queue
 	nodesToVisit.push(startRecord);
 
 	//Iterate through processing each node
-	while (currentRecord.mNode != pTo && !nodesToVisit.empty())
+	while (currentRecord.mNode != pTo && nodesToVisit.size() > 0)
 	{
-		//Find smallest element in the open list
+		//Find smallest element in the open list and pop
 		currentRecord = nodesToVisit.top();
 		nodesToVisit.pop();
 
@@ -75,29 +76,32 @@ Path * AStarPathfinder::findPath(Node * pFrom, Node * pTo)
 		//Otherwise get its outgoing connections
 		std::vector<Connection*> connections = mpGraph->getConnections(currentRecord.mNode->getId());
 
-		//Loop through each connecto=ion in turn
+		//Loop through each connection in turn
 		for (unsigned int i = 0; i < connections.size(); i++)
 		{
-			bool containedInColsedList = false, containedInOpenList = false;
+			bool inVisitedQueue = false;
 			Connection* currentConnection = connections[i];
 
 			//get end node and cost
-			endNode = connections[i]->getToNode();
+			endNode = currentConnection->getToNode();
 			endNodeCost = currentRecord.mCostSoFar + currentConnection->getCost();
 
 			//Create queue check
-			NodeRecord tmpClosed = {};
-			tmpClosed.mNode = endNode;
+			NodeRecord tmpRecord = {};
+			tmpRecord.mNode = endNode;
 
-			PriorityQueue <NodeRecord, std::vector<NodeRecord>, CompareCost>::const_iterator it, it2;
-			it = visitedNodes.contains(tmpClosed);
-			it2 = nodesToVisit.contains(tmpClosed);
+			//Create iterator to check if contained in queues
+			PriorityQueue <NodeRecord, std::vector<NodeRecord>, CompareEstimatedCost>::const_iterator itVisited, itToVisit;
+			itVisited = visitedNodes.contains(tmpRecord);
+			itToVisit = nodesToVisit.contains(tmpRecord);
 
 			//If the node is closed we may have to skip, or remove it from the closed list
-			if (it != visitedNodes.end())
+			if (itVisited != visitedNodes.end())
 			{
-				endNodeRecord.insert(it->mNode, it->mConnection, it->mCostSoFar, it->mEstimatedTotalCost);
+				//Here we find the record in the closed list corresponding to the endNode
+				endNodeRecord.insert(itVisited->mNode, itVisited->mConnection, itVisited->mCostSoFar, itVisited->mEstimatedTotalCost);
 
+				//If route is worse, then skip
 				if (endNodeRecord.mCostSoFar <= endNodeCost)
 				{
 					continue;
@@ -112,12 +116,13 @@ Path * AStarPathfinder::findPath(Node * pFrom, Node * pTo)
 
 			}
 			//Skip if the node is open and we've not found a better route
-			else if (it2 != nodesToVisit.end())
+			else if (itToVisit != nodesToVisit.end())
 			{
-				containedInOpenList = true;
+				//in visited queue true
+				inVisitedQueue = true;
 
 				//Here we find the record in the open list corresponding to the endNode
-				endNodeRecord.insert(it2->mNode, it2->mConnection, it2->mCostSoFar, it2->mEstimatedTotalCost);
+				endNodeRecord.insert(itToVisit->mNode, itToVisit->mConnection, itToVisit->mCostSoFar, itToVisit->mEstimatedTotalCost);
 
 				//If our route is no better, then skip
 				if (endNodeRecord.mCostSoFar <= endNodeCost)
@@ -130,12 +135,12 @@ Path * AStarPathfinder::findPath(Node * pFrom, Node * pTo)
 				endNodeHeuristic = endNodeRecord.mConnection->getCost() - endNodeRecord.mCostSoFar;
 
 			}
-			//Otherwise we know we;ve got an unvisited node, so make a record for it
+			//Otherwise we know we've got an unvisited node, so make a record for it
 			else
 			{
 				endNodeRecord = {};
 				endNodeRecord.mNode = endNode;
-				endNodeHeuristic = mHeuristic.estimate(endNode);
+				endNodeHeuristic = mHeuristic.getHeuristic(endNode);
 
 			}
 
@@ -146,7 +151,7 @@ Path * AStarPathfinder::findPath(Node * pFrom, Node * pTo)
 			endNodeRecord.mEstimatedTotalCost = endNodeCost + endNodeHeuristic;
 
 			//And add it to the open list
-			if (!containedInOpenList)
+			if (!inVisitedQueue)
 			{
 				nodesToVisit.push(endNodeRecord);
 			}
@@ -154,10 +159,11 @@ Path * AStarPathfinder::findPath(Node * pFrom, Node * pTo)
 		}
 		//We've finished looking at the connections for the current node, so add
 		//it to the closed list and remove it from the open list
+		nodesToVisit.remove(currentRecord);
 		visitedNodes.push(currentRecord);
-#ifdef VISUALIZE_PATH
+		#ifdef VISUALIZE_PATH
 		mVisitedNodes.push_back(currentRecord.mNode);
-#endif
+		#endif
 
 	}
 	//We're here if we've either found the goal, or if we've no more nodes to
@@ -165,7 +171,6 @@ Path * AStarPathfinder::findPath(Node * pFrom, Node * pTo)
 	if (currentRecord.mNode != pTo)
 	{
 		return NULL;
-
 	}
 	else
 	{
@@ -174,18 +179,22 @@ Path * AStarPathfinder::findPath(Node * pFrom, Node * pTo)
 		//Work back along the path, accumulating connections
 		while (currentRecord.mNode != pFrom)
 		{
+			//Add node to path
 			pPath->addNode(currentRecord.mNode);
-
+			//Get connection from
 			currentRecord.mNode = currentRecord.mConnection->getFromNode();
 
+			//Create iterator to check visited queue
 			PriorityQueue <NodeRecord, std::vector<NodeRecord>, CompareCost>::const_iterator it;
 			it = visitedNodes.contains(currentRecord);
 
 			if (it != visitedNodes.end())
 			{
+				//Set connection to visited connection
 				currentRecord.mConnection = it->mConnection;
 			}
 		}
+		//Revere path for output
 		int size = finalPath->getNumNodes();
 		for (int i = 0; i < size; i++)
 		{
@@ -193,6 +202,7 @@ Path * AStarPathfinder::findPath(Node * pFrom, Node * pTo)
 			pPath->addNode(finalPath->getAndRemoveNextNode());
 		}
 
+		//Cleanup path
 		delete finalPath;
 	}
 
@@ -201,10 +211,10 @@ Path * AStarPathfinder::findPath(Node * pFrom, Node * pTo)
 	mTimeElapsed = gpPerformanceTracker->getElapsedTime("path");
 
 	//Set visual grid path to path
-#ifdef VISUALIZE_PATH
+	#ifdef VISUALIZE_PATH
 	mpPath = pPath;
-#endif
+	#endif
+
 	//Return path
 	return pPath;
-
 }

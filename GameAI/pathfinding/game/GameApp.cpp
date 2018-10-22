@@ -62,7 +62,7 @@ bool GameApp::init()
 	mpGridGraph = new GridGraph(mpGrid);
 	//init the nodes and connections
 	mpGridGraph->init();
-
+	//Init current pathfinder type
 	mpPathfinder = new DijkstraPathfinder(mpGridGraph);
 
 	//load buffers

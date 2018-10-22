@@ -40,20 +40,20 @@ Path * DijkstraPathfinder::findPath(Node * pFrom, Node * pTo)
 	Path* pPath = new Path();
 	//Initialize the open and closed lists
 	PriorityQueue<NodeRecord, std::vector<NodeRecord>, CompareCost> nodesToVisit, visitedNodes;
-	//Node* endNode
+	//endNode variables
 	Node* endNode;
+	float endNodeCost;
 	//Node records
 	NodeRecord currentRecord = {}, endNodeRecord = {};
-	//End heuristic and cost
-	float endNodeCost;
 
 	//Initialize the record for the start node
-	mNodeRecord = {};
-	mNodeRecord.mNode = pFrom;
-	mNodeRecord.mConnection = nullptr;
-	mNodeRecord.mCostSoFar = 0;
+	NodeRecord startRecord = {};
+	startRecord.mNode = pFrom;
+	startRecord.mConnection = nullptr;
+	startRecord.mCostSoFar = 0;
 
-	nodesToVisit.push(mNodeRecord);
+	//Add start to open queue
+	nodesToVisit.push(startRecord);
 
 	//Iterate through processing each node
 	while (currentRecord.mNode != pTo && nodesToVisit.size() > 0)
@@ -74,7 +74,7 @@ Path * DijkstraPathfinder::findPath(Node * pFrom, Node * pTo)
 		//Loop through each connecto=ion in turn
 		for (unsigned int i = 0; i < connections.size(); i++)
 		{
-			bool containedInOpenList = false;
+			bool inVisitedQueue = false;
 			Connection* currentConnection = connections[i];
 
 			//get end node and cost
@@ -82,25 +82,25 @@ Path * DijkstraPathfinder::findPath(Node * pFrom, Node * pTo)
 			endNodeCost = currentRecord.mCostSoFar + currentConnection->getCost();
 
 			//Create queue check
-			NodeRecord tmpClosed = {};
-			PriorityQueue <NodeRecord, std::vector<NodeRecord>, CompareCost>::const_iterator it;
+			NodeRecord tmpRecord = {};
+			tmpRecord.mNode = endNode;
 
-			tmpClosed.mNode = endNode;
-
-			it = nodesToVisit.contains(tmpClosed);
+			//Create iterator to check if contained in queue
+			PriorityQueue <NodeRecord, std::vector<NodeRecord>, CompareCost>::const_iterator itToVisit;
+			itToVisit = nodesToVisit.contains(tmpRecord);
 
 			//If the node is closed we may have to skip, or remove it from the closed list
-			if (visitedNodes.contains(tmpClosed) != visitedNodes.end())
+			if (visitedNodes.contains(tmpRecord) != visitedNodes.end())
 			{
 				continue;
 			}
 			//Skip if the node is open and we've not found a better route
-			else if (it != nodesToVisit.end())
+			else if (itToVisit != nodesToVisit.end())
 			{
-				containedInOpenList = true;
+				inVisitedQueue = true;
 
 				//Here we find the record in the open list corresponding to the endNode
-				endNodeRecord.insert(it->mNode, it->mConnection, it->mCostSoFar);
+				endNodeRecord.insert(itToVisit->mNode, itToVisit->mConnection, itToVisit->mCostSoFar);
 
 				//If our route is no better, then skip
 				if (endNodeRecord.mCostSoFar <= endNodeCost)
@@ -109,7 +109,7 @@ Path * DijkstraPathfinder::findPath(Node * pFrom, Node * pTo)
 				}
 
 			}
-			//Otherwise we know we;ve got an unvisited node, so make a record for it
+			//Otherwise we know we've got an unvisited node, so make a record for it
 			else
 			{
 				endNodeRecord = {};
@@ -123,7 +123,7 @@ Path * DijkstraPathfinder::findPath(Node * pFrom, Node * pTo)
 			endNodeRecord.mConnection = currentConnection;
 
 			//And add it to the open list
-			if (!containedInOpenList)
+			if (!inVisitedQueue)
 			{
 				nodesToVisit.push(endNodeRecord);
 			}
@@ -133,7 +133,9 @@ Path * DijkstraPathfinder::findPath(Node * pFrom, Node * pTo)
 		//it to the closed list and remove it from the open list
 		nodesToVisit.remove(currentRecord);
 		visitedNodes.push(currentRecord);
+		#ifdef VISUALIZE_PATH
 		mVisitedNodes.push_back(currentRecord.mNode);
+		#endif
 
 	}
 	//We're here if we've either found the goal, or if we've no more nodes to
@@ -150,19 +152,22 @@ Path * DijkstraPathfinder::findPath(Node * pFrom, Node * pTo)
 		//Work back along the path, accumulating connections
 		while (currentRecord.mNode != pFrom)
 		{
+			//Add node to path
 			pPath->addNode(currentRecord.mNode);
-
+			//Get connection from
 			currentRecord.mNode = currentRecord.mConnection->getFromNode();	
 
+			//Create iterator to check visited queue
 			PriorityQueue <NodeRecord, std::vector<NodeRecord>, CompareCost>::const_iterator it;
-			
 			it = visitedNodes.contains(currentRecord);
 
 			if (it != visitedNodes.end())
 			{
+				//Set connection to visited connection
 				currentRecord.mConnection = it->mConnection;
 			}
 		}
+		//Revere path for output
 		int size = finalPath->getNumNodes();
 		for (int i = 0; i < size; i++)
 		{
@@ -170,6 +175,7 @@ Path * DijkstraPathfinder::findPath(Node * pFrom, Node * pTo)
 			pPath->addNode(finalPath->getAndRemoveNextNode());
 		}
 
+		//Cleanup path
 		delete finalPath;
 	}
 
@@ -184,7 +190,6 @@ Path * DijkstraPathfinder::findPath(Node * pFrom, Node * pTo)
 
 	//Return path
 	return pPath;
-
 }
 
 
