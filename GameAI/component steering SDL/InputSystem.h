@@ -19,15 +19,9 @@ private:
 
 	enum mKeyCodes
 	{
-		Q_KEY = SDLK_q,
-		W_KEY = SDLK_w,
-		E_KEY = SDLK_e,
-		R_KEY = SDLK_r,
-		T_KEY = SDLK_t,
-		Y_KEY = SDLK_y,
 		A_KEY = SDLK_a,
 		D_KEY = SDLK_d,
-		ENTER_KEY = SDLK_RETURN,
+		F_KEY = SDLK_f,
 		ESC_KEY = SDLK_ESCAPE,
 	};
 };

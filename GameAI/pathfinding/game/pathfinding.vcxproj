@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\component steering SDL\InputSystem.h" />
     <ClInclude Include="..\common\Color.h" />
     <ClInclude Include="..\common\Font.h" />
     <ClInclude Include="..\common\Game.h" />
@@ -95,6 +96,7 @@
     <ClInclude Include="DebugContent.h" />
     <ClInclude Include="DebugDisplay.h" />
     <ClInclude Include="DepthFirstPathfinder.h" />
+    <ClInclude Include="DijkstraPathfinder.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameMessage.h" />
     <ClInclude Include="GameMessageManager.h" />
@@ -106,8 +108,10 @@
     <ClInclude Include="Pathfinder.h" />
     <ClInclude Include="PathfindingDebugContent.h" />
     <ClInclude Include="PathToMessage.h" />
+    <ClInclude Include="PriorityQueue.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\component steering SDL\InputSystem.cpp" />
     <ClCompile Include="..\common\Color.cpp" />
     <ClCompile Include="..\common\Font.cpp" />
     <ClCompile Include="..\common\Game.cpp" />
@@ -122,6 +126,7 @@
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="DebugDisplay.cpp" />
     <ClCompile Include="DepthFirstPathfinder.cpp" />
+    <ClCompile Include="DijkstraPathfinder.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameMessage.cpp" />
     <ClCompile Include="GameMessageManager.cpp" />

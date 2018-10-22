@@ -28,6 +28,30 @@
     <Filter Include="Source Files\pathfinding">
       <UniqueIdentifier>{474fbefa-c012-4187-954c-fdb12b4f06d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Messaging">
+      <UniqueIdentifier>{9f6882d0-82b7-42ce-8f6a-24b809345f0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{e23d706c-577c-4f41-884d-28b7761277a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{0d4e6af0-2173-42e9-aff2-b349f20acb58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Messaging">
+      <UniqueIdentifier>{43dfda3a-5242-4951-99bd-c546dc5d4967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Messaging\Messages">
+      <UniqueIdentifier>{6d10ad45-3fbb-4671-90f7-264702fb96ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Messaging\Messages">
+      <UniqueIdentifier>{58b2a7f8-2137-4c21-b092-e501ee88354d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Debug">
+      <UniqueIdentifier>{38e7cb6a-f448-461b-ba27-31b6b3b46f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Debug">
+      <UniqueIdentifier>{800edd90-8d45-4951-9dce-5a5267ecf8a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common\Game.h">
@@ -44,12 +68,6 @@
     </ClInclude>
     <ClInclude Include="..\common\Sprite.h">
       <Filter>Common\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMessage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMessageManager.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameApp.h">
       <Filter>Header Files</Filter>
@@ -78,9 +96,6 @@
     <ClInclude Include="..\common\GridVisualizer.h">
       <Filter>Common\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PathToMessage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GridPathfinder.h">
       <Filter>Header Files\pathfinding</Filter>
     </ClInclude>
@@ -90,15 +105,6 @@
     <ClInclude Include="..\common\GraphicsBufferManager.h">
       <Filter>Common\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DebugContent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DebugDisplay.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PathfindingDebugContent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\common\Color.h">
       <Filter>Common\Header Files</Filter>
     </ClInclude>
@@ -107,6 +113,33 @@
     </ClInclude>
     <ClInclude Include="..\common\Font.h">
       <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMessageManager.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="PathToMessage.h">
+      <Filter>Header Files\Messaging\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\component steering SDL\InputSystem.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugContent.h">
+      <Filter>Header Files\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugDisplay.h">
+      <Filter>Header Files\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="PathfindingDebugContent.h">
+      <Filter>Header Files\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="DijkstraPathfinder.h">
+      <Filter>Header Files\pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueue.h">
+      <Filter>Header Files\pathfinding</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -124,12 +157,6 @@
     </ClCompile>
     <ClCompile Include="..\common\Sprite.cpp">
       <Filter>Common\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameMessage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameMessageManager.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
@@ -161,9 +188,6 @@
     <ClCompile Include="..\common\GridVisualizer.cpp">
       <Filter>Common\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PathToMessage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GridPathfinder.cpp">
       <Filter>Source Files\pathfinding</Filter>
     </ClCompile>
@@ -173,12 +197,6 @@
     <ClCompile Include="..\common\GraphicsBufferManager.cpp">
       <Filter>Common\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DebugDisplay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PathfindingDebugContent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\common\Color.cpp">
       <Filter>Common\Source Files</Filter>
     </ClCompile>
@@ -187,6 +205,27 @@
     </ClCompile>
     <ClCompile Include="..\common\Font.cpp">
       <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMessageManager.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\component steering SDL\InputSystem.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="PathToMessage.cpp">
+      <Filter>Source Files\Messaging\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugDisplay.cpp">
+      <Filter>Source Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="PathfindingDebugContent.cpp">
+      <Filter>Source Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="DijkstraPathfinder.cpp">
+      <Filter>Source Files\pathfinding</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
