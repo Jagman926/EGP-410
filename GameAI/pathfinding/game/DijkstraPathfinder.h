@@ -1,9 +1,9 @@
 #pragma once
 
 #include "GridPathfinder.h"
-#include <vector>
-#include <Vector2D.h>
+#include "NodeRecord.h"
 
+class Node;
 class Path;
 class Graph;
 class GraphicsBuffer;
@@ -19,25 +19,5 @@ public:
 	Path* findPath(Node* pFrom, Node* pTo);
 
 private:
-	//Heuristic
-	float heuristic(Vector2D a, Vector2D b);
-
-	//Node record strut
-	struct NodeRecord
-	{
-		Node* mNode;
-		Connection* mConnection;
-		float mCost;
-		float mCostSoFar;
-		float mEstimatedTotalCost;
-	};
-
-	//Compare estimated cost struct
-	struct CompareEstimatedCost : public std::binary_function<NodeRecord, NodeRecord, bool>
-	{
-		bool operator()(const NodeRecord lhs, const NodeRecord rhs) const
-		{
-			return lhs.mEstimatedTotalCost < rhs.mEstimatedTotalCost;
-		}
-	};
+	NodeRecord mNodeRecord;
 };

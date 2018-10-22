@@ -12,6 +12,7 @@
 #include "GridGraph.h"
 #include "Connection.h"
 #include "Path.h"
+#include "AStarPathfinder.h"
 #include "DijkstraPathfinder.h"
 #include "Pathfinder.h"
 #include "GridPathfinder.h"

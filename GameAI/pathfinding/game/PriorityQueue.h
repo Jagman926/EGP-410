@@ -1,5 +1,6 @@
 #pragma once
 
+#include "NodeRecord.h"
 #include <queue>
 
 template<
@@ -28,15 +29,15 @@ public:
 		return last;
 	}
 	//contains
-	bool contains(const T&val) const
+	const_iterator contains(const T&val) const
 	{
 		auto first = this->c.cbegin();
 		auto last = this->c.cend();
 		while (first != last) {
-			if (*first == val) return true;
+			if (*first == val) return first;
 			++first;
 		}
-		return false;
+		return last;
 	}
 	//Remove
 	bool remove(const T& value) {
@@ -50,5 +51,23 @@ public:
 		{
 			return false;
 		}
+	}
+};
+
+//Compare cost struct
+struct CompareCost : public std::binary_function<NodeRecord, NodeRecord, bool>
+{
+	bool operator()(const NodeRecord lhs, const NodeRecord rhs) const
+	{
+		return lhs.mCostSoFar < rhs.mCostSoFar;
+	}
+};
+
+//Compare estimated cost struct
+struct CompareEstimatedCost : public std::binary_function<NodeRecord, NodeRecord, bool>
+{
+	bool operator()(const NodeRecord lhs, const NodeRecord rhs) const
+	{
+		return lhs.mEstimatedTotalCost < rhs.mEstimatedTotalCost;
 	}
 };

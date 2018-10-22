@@ -52,6 +52,12 @@
     <Filter Include="Source Files\Debug">
       <UniqueIdentifier>{800edd90-8d45-4951-9dce-5a5267ecf8a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\pathfinding\Containers">
+      <UniqueIdentifier>{222f114b-266e-4335-8dee-f54bfa2dff8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\pathfinding\Containers">
+      <UniqueIdentifier>{3f0e5a46-69b8-4e18-b39b-c08f9ab81d66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common\Game.h">
@@ -139,7 +145,13 @@
       <Filter>Header Files\pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="PriorityQueue.h">
+      <Filter>Header Files\pathfinding\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="AStarPathfinder.h">
       <Filter>Header Files\pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeRecord.h">
+      <Filter>Header Files\pathfinding\Containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +238,15 @@
     </ClCompile>
     <ClCompile Include="DijkstraPathfinder.cpp">
       <Filter>Source Files\pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="PriorityQueue.cpp">
+      <Filter>Source Files\pathfinding\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="AStarPathfinder.cpp">
+      <Filter>Source Files\pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeRecord.cpp">
+      <Filter>Source Files\pathfinding\Containers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -266,3 +266,13 @@ GameAI/pathfinding/game/Debug/pathfinding.pdb
 GameAI/pathfinding/game/Debug/steering.exe
 GameAI/pathfinding/game/Debug/steering.ilk
 GameAI/pathfinding/game/Debug/steering.pdb
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/413394b5dd994e26/ASTARPATHFINDER.ipch
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/7ea7fb23036d0145/ASTARPATHFINDER.ipch
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/85b57dbfec5ce787/PRIORITYQUEUE.ipch
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/9116153e2454de72/NODERECORD.ipch
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/e3171db1ec2ce5a1/NODERECORD.ipch
+GameAI/pathfinding/game/.vs/pathfinding/v15/Browse.VC.opendb
+GameAI/pathfinding/game/Debug/AStarPathfinder.obj
+GameAI/pathfinding/game/Debug/DijkstraPathfinder.obj
+GameAI/pathfinding/game/Debug/NodeRecord.obj
+GameAI/pathfinding/game/Debug/PriorityQueue.obj

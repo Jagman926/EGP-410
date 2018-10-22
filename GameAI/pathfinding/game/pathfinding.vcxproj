@@ -92,6 +92,7 @@
     <ClInclude Include="..\common\Renderer.h" />
     <ClInclude Include="..\common\Sprite.h" />
     <ClInclude Include="..\common\SpriteManager.h" />
+    <ClInclude Include="AStarPathfinder.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="DebugContent.h" />
     <ClInclude Include="DebugDisplay.h" />
@@ -104,6 +105,7 @@
     <ClInclude Include="GridGraph.h" />
     <ClInclude Include="GridPathfinder.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="NodeRecord.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="Pathfinder.h" />
     <ClInclude Include="PathfindingDebugContent.h" />
@@ -123,6 +125,7 @@
     <ClCompile Include="..\common\Renderer.cpp" />
     <ClCompile Include="..\common\Sprite.cpp" />
     <ClCompile Include="..\common\SpriteManager.cpp" />
+    <ClCompile Include="AStarPathfinder.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="DebugDisplay.cpp" />
     <ClCompile Include="DepthFirstPathfinder.cpp" />
@@ -135,10 +138,12 @@
     <ClCompile Include="GridPathfinder.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="NodeRecord.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="Pathfinder.cpp" />
     <ClCompile Include="PathfindingDebugContent.cpp" />
     <ClCompile Include="PathToMessage.cpp" />
+    <ClCompile Include="PriorityQueue.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
