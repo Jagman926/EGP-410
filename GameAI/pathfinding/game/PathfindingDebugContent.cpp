@@ -5,8 +5,9 @@
 
 using namespace std;
 
-PathfindingDebugContent::PathfindingDebugContent( GridPathfinder* pPathfinder )
+PathfindingDebugContent::PathfindingDebugContent( GridPathfinder* pPathfinder, char currentPathfinderType )
 	:mpPathfinder(pPathfinder)
+	,currentPathfinderType(currentPathfinderType)
 {
 }
 
@@ -17,6 +18,21 @@ string PathfindingDebugContent::getDebugString()
 #ifdef VISUALIZE_PATH
 	if( mpPathfinder->mpPath != NULL )
 	{
+		switch (currentPathfinderType)
+		{
+		case 'f':
+			theStream << "DepthFirst | ";
+			break;
+		case 'd':
+			theStream << "Dijkstra | ";
+			break;
+		case 'a':
+			theStream << "A* | ";
+			break;
+		default:
+			break;
+		}
+
 		theStream << "Pathlength:"<< mpPathfinder->mpPath->getNumNodes();
 	}
 	

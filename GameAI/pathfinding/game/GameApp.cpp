@@ -1,25 +1,26 @@
 #include "Game.h"
 #include "GameApp.h"
+#include "InputManager.h"
 #include "GameMessageManager.h"
-#include "PathToMessage.h"
 #include "GraphicsSystem.h"
 #include "GraphicsBuffer.h"
 #include "GraphicsBufferManager.h"
 #include "Sprite.h"
 #include "SpriteManager.h"
-#include <Vector2D.h>
 #include "Grid.h"
 #include "GridGraph.h"
 #include "Connection.h"
 #include "Path.h"
 #include "AStarPathfinder.h"
 #include "DijkstraPathfinder.h"
+#include "DepthFirstPathfinder.h"
 #include "Pathfinder.h"
 #include "GridPathfinder.h"
 #include "GridVisualizer.h"
 #include "DebugDisplay.h"
 #include "PathfindingDebugContent.h"
 
+#include <Vector2D.h>
 #include <SDL.h>
 #include <fstream>
 #include <vector>
@@ -29,6 +30,7 @@ const std::string gFileName = "pathgrid.txt";
 
 GameApp::GameApp()
 :mpMessageManager(NULL)
+,mpInputManager(NULL)
 ,mpGrid(NULL)
 ,mpGridGraph(NULL)
 ,mpPathfinder(NULL)
@@ -50,7 +52,9 @@ bool GameApp::init()
 		return false;
 	}
 
+	//Init Input and Message Managers
 	mpMessageManager = new GameMessageManager();
+	mpInputManager = new InputManager();
 
 	//create and load the Grid, GridBuffer, and GridRenderer
 	mpGrid = new Grid(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight(), GRID_SQUARE_SIZE);
@@ -76,7 +80,7 @@ bool GameApp::init()
 	}
 
 	//debug display
-	PathfindingDebugContent* pContent = new PathfindingDebugContent( mpPathfinder );
+	PathfindingDebugContent* pContent = new PathfindingDebugContent( mpPathfinder, 'd');
 	mpDebugDisplay = new DebugDisplay( Vector2D(0,12), pContent );
 
 	mpMasterTimer->start();
@@ -85,6 +89,9 @@ bool GameApp::init()
 
 void GameApp::cleanup()
 {
+	delete mpInputManager;
+	mpInputManager = NULL;
+
 	delete mpMessageManager;
 	mpMessageManager = NULL;
 
@@ -114,45 +121,23 @@ void GameApp::processLoop()
 {
 	//get back buffer
 	GraphicsBuffer* pBackBuffer = mpGraphicsSystem->getBackBuffer();
+
 	//copy to back buffer
 	mpGridVisualizer->draw( *pBackBuffer );
-#ifdef VISUALIZE_PATH
-	//show pathfinder visualizer
-	mpPathfinder->drawVisualization(mpGrid, pBackBuffer);
-#endif
 
+	//show pathfinder visualizer
+	#ifdef VISUALIZE_PATH
+	mpPathfinder->drawVisualization(mpGrid, pBackBuffer);
+	#endif
+
+	//Update inputs
+	mpInputManager->update();
+
+	//Flip backbuffer
 	mpDebugDisplay->draw( pBackBuffer );
 
+	//Process messages for frame
 	mpMessageManager->processMessagesForThisframe();
-
-	//get input - should be moved someplace better
-	SDL_PumpEvents();
-	int x, y;
-
-	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT))
-	{
-		static Vector2D lastPos(0.0f, 0.0f);
-		Vector2D pos(x,y);
-		if (lastPos.getX() != pos.getX() || lastPos.getY() != pos.getY())
-		{
-			GameMessage* pMessage = new PathToMessage(lastPos, pos);
-			mpMessageManager->addMessage(pMessage, 0);
-			lastPos = pos;
-		}
-	}
-
-	//get input - should be moved someplace better
-	//all this should be moved to InputManager!!!
-	{
-		//get keyboard state
-		const Uint8 *state = SDL_GetKeyboardState(NULL);
-
-		//if escape key was down then exit the loop
-		if (state[SDL_SCANCODE_ESCAPE])
-		{
-			markForExit();
-		}
-	}
 
 	//should be last thing in processLoop
 	Game::processLoop();
@@ -161,4 +146,30 @@ void GameApp::processLoop()
 bool GameApp::endLoop()
 {
 	return Game::endLoop();
+}
+
+void GameApp::setPathfinder(char pathType)
+{
+	//Set new pathfinder
+	switch (pathType)
+	{
+	case 'f':
+		delete mpPathfinder;
+		mpPathfinder = new DepthFirstPathfinder(mpGridGraph);
+		break;
+	case 'd':
+		delete mpPathfinder;
+		mpPathfinder = new DijkstraPathfinder(mpGridGraph);
+		break;
+	case 'a':
+		delete mpPathfinder;
+		mpPathfinder = new AStarPathfinder(mpGridGraph);
+		break;
+	default:
+		break;
+	}
+	//debug display
+	delete mpDebugDisplay;
+	PathfindingDebugContent* pContent = new PathfindingDebugContent(mpPathfinder, pathType);
+	mpDebugDisplay = new DebugDisplay(Vector2D(0, 12), pContent);
 }

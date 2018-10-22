@@ -80,7 +80,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\component steering SDL\InputSystem.h" />
     <ClInclude Include="..\common\Color.h" />
     <ClInclude Include="..\common\Font.h" />
     <ClInclude Include="..\common\Game.h" />
@@ -98,22 +97,24 @@
     <ClInclude Include="DebugDisplay.h" />
     <ClInclude Include="DepthFirstPathfinder.h" />
     <ClInclude Include="DijkstraPathfinder.h" />
+    <ClInclude Include="ExitMessage.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameMessage.h" />
     <ClInclude Include="GameMessageManager.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GridGraph.h" />
     <ClInclude Include="GridPathfinder.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="NodeRecord.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="Pathfinder.h" />
+    <ClInclude Include="PathfinderTypeMessage.h" />
     <ClInclude Include="PathfindingDebugContent.h" />
     <ClInclude Include="PathToMessage.h" />
     <ClInclude Include="PriorityQueue.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\component steering SDL\InputSystem.cpp" />
     <ClCompile Include="..\common\Color.cpp" />
     <ClCompile Include="..\common\Font.cpp" />
     <ClCompile Include="..\common\Game.cpp" />
@@ -130,17 +131,20 @@
     <ClCompile Include="DebugDisplay.cpp" />
     <ClCompile Include="DepthFirstPathfinder.cpp" />
     <ClCompile Include="DijkstraPathfinder.cpp" />
+    <ClCompile Include="ExitMessage.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameMessage.cpp" />
     <ClCompile Include="GameMessageManager.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GridGraph.cpp" />
     <ClCompile Include="GridPathfinder.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="NodeRecord.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="Pathfinder.cpp" />
+    <ClCompile Include="PathfinderTypeMessage.cpp" />
     <ClCompile Include="PathfindingDebugContent.cpp" />
     <ClCompile Include="PathToMessage.cpp" />
   </ItemGroup>

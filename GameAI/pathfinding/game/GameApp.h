@@ -13,6 +13,7 @@ Champlain College
 class GraphicsBuffer;
 class Sprite;
 class KinematicUnit;
+class InputManager;
 class GameMessageManager;
 class Grid;
 class GridVisualizer;
@@ -37,14 +38,17 @@ public:
 	virtual void processLoop();
 	virtual bool endLoop();
 
-	void setPathfinder(GridPathfinder* pathFinder) { mpPathfinder = pathFinder; };
+	//
+	void setPathfinder(char pathType);
 	//accessors
+	inline InputManager* getInputManager() { return mpInputManager; };
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
 	inline GridVisualizer* getGridVisualizer() { return mpGridVisualizer; };
 	inline GridPathfinder* getPathfinder() { return mpPathfinder; };
 	inline Grid* getGrid() { return mpGrid; };
 	inline GridGraph* getGridGraph() { return mpGridGraph; };
 private:
+	InputManager* mpInputManager;
 	GameMessageManager* mpMessageManager;
 	Grid* mpGrid;
 	GridVisualizer* mpGridVisualizer;

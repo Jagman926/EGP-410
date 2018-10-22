@@ -276,3 +276,14 @@ GameAI/pathfinding/game/Debug/AStarPathfinder.obj
 GameAI/pathfinding/game/Debug/DijkstraPathfinder.obj
 GameAI/pathfinding/game/Debug/NodeRecord.obj
 GameAI/pathfinding/game/Debug/PriorityQueue.obj
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/2d9a9611ab817ffc/EXITMESSAGE.ipch
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/7749ab24786d7677/DEBUGDISPLAY.ipch
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/88a6ee2178fbe4a3/PATHFINDERTYPEMESSAGE.ipch
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/99d75a1b3766ec60/PATHFINDERTYPEMESSAGE.ipch
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/a234de8b83e66f1/INPUTMANAGER.ipch
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/bbc46012026f57b5/ADDMULTIPLEUNITS.ipch
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/e83d29ed95b3609f/INPUTSYSTEM.ipch
+GameAI/pathfinding/game/.vs/pathfinding/v15/ipch/AutoPCH/e8813a3fafad9f1f/EXITMESSAGE.ipch
+GameAI/pathfinding/game/Debug/ExitMessage.obj
+GameAI/pathfinding/game/Debug/InputManager.obj
+GameAI/pathfinding/game/Debug/PathfinderTypeMessage.obj

@@ -129,9 +129,6 @@
     <ClInclude Include="PathToMessage.h">
       <Filter>Header Files\Messaging\Messages</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\component steering SDL\InputSystem.h">
-      <Filter>Header Files\Input</Filter>
-    </ClInclude>
     <ClInclude Include="DebugContent.h">
       <Filter>Header Files\Debug</Filter>
     </ClInclude>
@@ -152,6 +149,15 @@
     </ClInclude>
     <ClInclude Include="NodeRecord.h">
       <Filter>Header Files\pathfinding\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitMessage.h">
+      <Filter>Header Files\Messaging\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="PathfinderTypeMessage.h">
+      <Filter>Header Files\Messaging\Messages</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -224,9 +230,6 @@
     <ClCompile Include="GameMessageManager.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\component steering SDL\InputSystem.cpp">
-      <Filter>Source Files\Input</Filter>
-    </ClCompile>
     <ClCompile Include="PathToMessage.cpp">
       <Filter>Source Files\Messaging\Messages</Filter>
     </ClCompile>
@@ -244,6 +247,15 @@
     </ClCompile>
     <ClCompile Include="NodeRecord.cpp">
       <Filter>Source Files\pathfinding\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitMessage.cpp">
+      <Filter>Source Files\Messaging\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="PathfinderTypeMessage.cpp">
+      <Filter>Source Files\Messaging\Messages</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

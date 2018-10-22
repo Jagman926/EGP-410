@@ -1,9 +1,9 @@
 #include "InputSystem.h"
-#include <iostream>
-#include <SDL_events.h>
 #include "Game.h"
 #include "GameMessageManager.h"
 #include "GameMessage.h"
+#include <iostream>
+#include <SDL_events.h>
 
 InputSystem::InputSystem()
 {
@@ -60,13 +60,6 @@ void InputSystem::update()
 		else if (event.type == SDL_MOUSEBUTTONDOWN)
 		{
 			//Move player to mouse position
-			//Vector2D pos(event.button.x, event.button.y);
-			//pMessage = new Message();
-			//mpGameMessageManager->addMessage(pMessage, 0);
-		}
-		else if (event.type == SDL_MOUSEMOTION)
-		{
-			//Print moues coords when moving mouse
 			//Vector2D pos(event.button.x, event.button.y);
 			//pMessage = new Message();
 			//mpGameMessageManager->addMessage(pMessage, 0);
