@@ -19,16 +19,20 @@ class AStarPathfinder : public GridPathfinder
 public:
 	AStarPathfinder(Graph *pGraph);
 	~AStarPathfinder();
-	//
+	
+	//Finds path from starting node (pFrom) to the goal node (pTo) using a heuristic
+	//based on linear distance. Will return a path through a visual grid when complete
 	Path* findPath(Node* pFrom, Node* pTo);
 
 private:
-	//Heuristic struct
+	//Heuristic struct which holds information for the 
+	//heuristic being added to nodes
 	struct Heuristic
 	{
 		Node* toNode;
 		Vector2D toNodePos;
 
+		//Sets goal for the heuristic to make its estimate off of
 		void setGoal(Node* goal)
 		{
 			//Set toNode
@@ -38,6 +42,8 @@ private:
 			toNodePos = pGame->getGrid()->getULCornerOfSquare(toNode->getId());
 		};
 
+		//Gets the heuristic value give the current node. Currently returs a linear
+		//distance heuristic, but a manhatten distance heuristic is included
 		float getHeuristic(Node* node)
 		{
 			Vector2D currentNodePos;

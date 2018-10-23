@@ -19,10 +19,10 @@ struct NodeRecord
 	float mCostSoFar;
 	float mEstimatedTotalCost;
 
-	//Insert function
+	//Insert function to insert new information into struct
 	void insert(Node* n, Connection* c, float cost, float estimatedCost = -1.0f);
 
-	//Operator functions
+	//Operator functions. Allows for comparison between NodeRecord nodes
 	friend bool operator== (const NodeRecord &lhs, const NodeRecord &rhs) { return  lhs.mNode == rhs.mNode; };
 	bool operator ==(const NodeRecord& rhs) { return mNode == rhs.mNode; };
 };

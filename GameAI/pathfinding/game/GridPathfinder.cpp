@@ -57,13 +57,13 @@ void GridPathfinder::drawVisualization( Grid* pGrid, GraphicsBuffer* pDest )
 	if( mpPath != NULL )
 	{
 		Color currentPathColor = pathColor;
-		unsigned int numNodes = mpPath->getNumNodes();
+		int numNodes = mpPath->getNumNodes();
 
 		/*for( int i=1; i<numNodes-1; i++ )
 		{
 			mpVisualizer->addColor( mpPath->peekNode(i)->getId(), pathColor );
 		}*/
-		for (unsigned int i = 1; i < numNodes - 1; i++)
+		for (int i = 1; i < numNodes - 1; i++)
 		{
 			mpVisualizer->addColor(mpPath->peekNode(i)->getId(), currentPathColor);
 			float lerpVal = lerp(i, 0, numNodes);

@@ -15,7 +15,9 @@ public:
 	DepthFirstPathfinder(Graph* pGraph);
 	~DepthFirstPathfinder();
 
-	Path* findPath(Node* pFrom, Node* pTo);//make sure to delete the path when you are done!
+	//Finds path from starting node (pFrom) to the goal node (pTo) using a depth first 
+	//searched by implementing a list in the form of a stack
+	Path* findPath(Node* pFrom, Node* pTo);
 
 private:
 };

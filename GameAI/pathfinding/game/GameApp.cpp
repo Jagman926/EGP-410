@@ -148,6 +148,8 @@ bool GameApp::endLoop()
 	return Game::endLoop();
 }
 
+//Sets new path for pathfinder from PathfinderTypeMessage. Also resets pathfinder content
+//and Debug Display so that the previous path is removed
 void GameApp::setPathfinder(char pathType)
 {
 	//Set new pathfinder

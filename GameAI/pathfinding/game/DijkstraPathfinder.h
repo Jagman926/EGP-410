@@ -16,7 +16,9 @@ class DijkstraPathfinder : public GridPathfinder
 public:
 	DijkstraPathfinder(Graph *pGraph);
 	~DijkstraPathfinder();
-	//
+	
+	//Finds path from starting node (pFrom) to the goal node (pTo) a priority queue
+	//(acts like a breadth first search)d
 	Path* findPath(Node* pFrom, Node* pTo);
 };
 
