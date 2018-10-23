@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DIJKSTRA_PATHFINDER
+#define DIJKSTRA_PATHFINDER
 
 #include "GridPathfinder.h"
 #include "NodeRecord.h"
@@ -18,3 +19,5 @@ public:
 	//
 	Path* findPath(Node* pFrom, Node* pTo);
 };
+
+#endif // !DIJKSTRA_PATHFINDER

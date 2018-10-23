@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_APP
+#define GAME_APP
 
 /*Game - class to hold all game related info.
 
@@ -24,7 +25,7 @@ class DebugDisplay;
 const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
 
 
-class GameApp: public Game
+class GameApp : public Game
 {
 public:
 	GameApp();
@@ -58,4 +59,7 @@ private:
 	GridPathfinder* mpPathfinder;
 
 };
+
+
+#endif // !GAME_APP
 

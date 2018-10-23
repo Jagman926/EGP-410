@@ -1,4 +1,5 @@
-#pragma once
+#ifndef EXIT_MESSAGE_H
+#define EXIT_MESSAGE_H
 
 #include "GameMessage.h"
 
@@ -10,3 +11,5 @@ public:
 
 	void process();
 };
+
+#endif // !EXIT_MESSAGE_H

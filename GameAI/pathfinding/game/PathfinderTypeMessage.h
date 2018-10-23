@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PATHFINDER_TYPE_MESSAGE_H
+#define PATHFINDER_TYPE_MESSAGE_H
 
 #include "GameMessage.h"
 
@@ -14,3 +15,5 @@ private:
 	bool mTypeChange;
 	char mCurrentPathType;
 };
+
+#endif // !PATHFINDER_TYPE_MESSAGE_H

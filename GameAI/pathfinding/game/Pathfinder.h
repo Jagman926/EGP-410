@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PATHFINDER
+#define PATHFINDER
 
 #include <vector>
 #include <Trackable.h>
@@ -11,15 +12,17 @@ class Grid;
 
 #define VISUALIZE_PATH 1
 
-class Pathfinder:public Trackable
+class Pathfinder :public Trackable
 {
 public:
-	Pathfinder( Graph* pGraph );
+	Pathfinder(Graph* pGraph);
 	virtual ~Pathfinder();
 
-	virtual Path* findPath( Node* pFrom, Node* pTo ) = 0;
+	virtual Path* findPath(Node* pFrom, Node* pTo) = 0;
 
 protected:
 	Graph* mpGraph;
-	
+
 };
+
+#endif // !PATHFINDER

@@ -5,6 +5,7 @@
 #include "GridPathfinder.h"
 #include "Game.h"
 #include "GameApp.h"
+#include "GameMessage.h"
 
 PathfinderTypeMessage::PathfinderTypeMessage(char pathType)
 	:GameMessage(PATHFINDER_TYPE_MESSAGE)

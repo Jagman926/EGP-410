@@ -1,13 +1,13 @@
-#pragma once
+#ifndef PATH_TO_MESSAGE_H
+#define PATH_TO_MESSAGE_H
 
 #include "GameMessage.h"
-
 #include "Vector2D.h"
 
-class PathToMessage:public GameMessage
+class PathToMessage :public GameMessage
 {
 public:
-	PathToMessage( const Vector2D& from, const Vector2D& to );
+	PathToMessage(const Vector2D& from, const Vector2D& to);
 	~PathToMessage();
 
 	const Vector2D& getFrom() const { return mFrom; };
@@ -19,3 +19,5 @@ private:
 	Vector2D mFrom;
 	Vector2D mTo;
 };
+
+#endif // !PATH_TO_MESSAGE_H

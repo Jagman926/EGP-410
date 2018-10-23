@@ -1,4 +1,5 @@
-#pragma once
+#ifndef A_STAR_PATHFINDER
+#define A_STAR_PATHFINDER
 
 #include "GameApp.h"
 #include "GridPathfinder.h"
@@ -56,3 +57,5 @@ private:
 	} mHeuristic;
 
 };
+
+#endif // !A_STAR_PATHFINDER

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GRAPH
+#define GRAPH
 
 #include <vector>
 #include <map>
@@ -7,16 +8,16 @@
 
 class Connection;
 
-class Graph:public Trackable
+class Graph :public Trackable
 {
 public:
 	Graph();
 	virtual ~Graph();
 
 	virtual void init();
-	std::vector<Connection*> getConnections( const Node& from );
-	std::vector<Connection*> getConnections( const NODE_ID& fromId );
-	Node* getNode( int index );
+	std::vector<Connection*> getConnections(const Node& from);
+	std::vector<Connection*> getConnections(const NODE_ID& fromId);
+	Node* getNode(int index);
 
 protected:
 	//a vector of Node pointers
@@ -26,3 +27,5 @@ protected:
 	//a map of Connection&'s vectors indexed on Node id
 	std::map< NODE_ID, std::vector<Connection*> > mConnectionMap;
 };
+
+#endif // !GRAPH

@@ -3,7 +3,7 @@
 #include "GameApp.h"
 
 ExitMessage::ExitMessage()
-	:GameMessage(EXIT_MESSAGE)
+	:GameMessage(EXIT_GAME_MESSAGE)
 {
 
 }

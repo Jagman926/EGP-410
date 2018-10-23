@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NODE_RECORD
+#define NODE_RECORD
 
 #include "GridPathfinder.h"
 #include "Node.h"
@@ -25,3 +26,5 @@ struct NodeRecord
 	friend bool operator== (const NodeRecord &lhs, const NodeRecord &rhs) { return  lhs.mNode == rhs.mNode; };
 	bool operator ==(const NodeRecord& rhs) { return mNode == rhs.mNode; };
 };
+
+#endif // !NODE_RECORD

@@ -1,25 +1,28 @@
-#pragma once
+#ifndef PATH
+#define PATH
 
 #include <vector>
 #include <Trackable.h>
 
 class Node;
 
-class Path:public Trackable
+class Path :public Trackable
 {
 public:
 	Path();
 	~Path();
 
-	Node* peekNode( int index ) const;
+	Node* peekNode(int index) const;
 	Node* peekNextNode() const;
 	Node* getAndRemoveNextNode();
-	bool containsNode( Node* pNode );
+	bool containsNode(Node* pNode);
 	int getNumNodes() const { return mNodes.size(); };
 
-	void addNode( Node* pNode );
+	void addNode(Node* pNode);
 
 private:
 	std::vector<Node*> mNodes;
 
 };
+
+#endif // !PATH
