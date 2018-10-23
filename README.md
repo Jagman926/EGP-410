@@ -10,43 +10,28 @@ Git Link: https://github.com/Jagman926/EGP-410
 
 ## Compile Instructions
  * Download and unzip project folder
- * Open "steering.sln" file
+ * Open "pathfinding.sln" file
  * Build code
- * Set steering project as startup project
+ * Set pathfinding project as startup project
  * Run project
 
 ## Input Instructions
- #### Mouse Movement
-
- > Displays mouse coordinates
 
  #### Mouse Click 
 
- > Moves player (black arrow) to coordinates
-
- #### "Enter" Key 
-
- > Spawns new unit at random position with Flocking Steering
-
- #### "Q and W" Keys 
-
- > Increase(Q) and Decrease(W) separation weight
-
- #### "E and R" Keys 
-
- > Increase(E) and Decrease(R) cohesion weight
-
- #### "T and Y" Keys 
-
- > Increase(T) and Decrease(Y) alignment weight
+ > Picks location to search to (uses previous position as start location)
 
  #### "A" Key
 
- > Spawns 10 random units with Flocking
+ > Switches pathfinding to A*
 
- #### "D" Key
+ #### "D" Key 
 
- > Deletes random unit (excludes player)
+ > Switches pathfinding to Dijkstra
+
+ #### "F" Key
+ 
+ > Switches pathfinding to Depth-First Search
 
  #### "Escape" Key
 
